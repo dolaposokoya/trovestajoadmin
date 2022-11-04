@@ -1,0 +1,23 @@
+nav {
+    display: block;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav ul li {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+    padding: 0em .5em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-family: var(--Montserrat);
+    font-size: .94em;
+    font-weight: 400;
+    color: var(--tro-blue)
+}

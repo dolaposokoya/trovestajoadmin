@@ -1,0 +1,91 @@
+.login-view {
+    margin-top: 2em;
+    background-color: var(--tro-blue);
+    padding: 8em 0em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+
+.inputview {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.input {
+    padding: 1em 2.5em;
+    padding-right: 8em;
+    font-family: var(--Montserrat);
+    font-size: .75em;
+    font-weight: var(--semiBild);
+    border: none;
+    margin-bottom: 1em;
+}
+
+.inputview .absolute {
+    position: absolute;
+    top: .8em;
+    left: .5em;
+    width: .9em;
+    height: 1em;
+}
+
+.inputview .absolute1 {
+    position: absolute;
+    top: .8em;
+    right: .5em;
+    width: 1.2em;
+    margin-left: 2em;
+}
+
+.errortext {
+    color: var(--error);
+    font-family: var(--Montserrat);
+    font-size: .75em;
+    font-weight: var(--regular);
+}
+
+.btnview {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnview button {
+    width: 100%;
+    border: none;
+    color: var(--white);
+    padding: .7em 0em;
+    background-color: var(--tro-gold);
+    font-family: var(--Montserrat);
+    font-size: .88em;
+    font-weight: var(--bold);
+}
+
+.supportview{
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contacttext {
+    color: var(--white);
+    font-family: var(--Montserrat);
+    font-size: .75em;
+    margin-bottom: 1em;
+    font-weight: var(--regular);
+}
+.contacttext1 {
+    color: var(--tro-gold);
+    font-family: var(--Montserrat);
+    font-size: .75em;
+    margin-bottom: 1em;
+    font-weight: var(--regular);
+}
