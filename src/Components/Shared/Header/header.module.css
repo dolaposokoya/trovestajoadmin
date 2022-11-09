@@ -1,7 +1,7 @@
 .headerViewNone {
     display: none;
-
 }
+
 .headerView {
     display: flex;
     width: 100%;
@@ -13,7 +13,6 @@
     flex-direction: column;
     height: 100vh;
     background-color: var(--tro-blue);
-    overflow-y: hidden;
     transition: all 500ms;
     z-index: 9999;
 }
@@ -72,7 +71,6 @@ nav ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 nav ul li {
@@ -89,4 +87,44 @@ nav ul li a {
     font-size: .94em;
     font-weight: var(--semiBold);
     color: var(--white);
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 600px) {
+    .harmburger {
+        display: none;
+    }
+
+    .headerViewNone {
+        display: block;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 1em;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 1em;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        font-family: var(--Montserrat);
+        font-size: .94em;
+        font-weight: var(--semiBold);
+        color: var(--tro-blue);
+        transition: border-bottom .9s;
+    }
+
+    nav ul li a:hover {
+        border-bottom: 2px solid var(--tro-blue);
+    }
 }
