@@ -15,6 +15,9 @@ export default function Index() {
             <div className={style.large}>
                 <Header />
             </div>
+            <div className={style['login-view']}>
+                    <Login />
+                </div>
             <div className={style.mobile}>
                 <div className={style.container}>
                     <div className={`${style['home-view']}`}>
@@ -25,9 +28,6 @@ export default function Index() {
                             <img src={Intro} alt="tro-vest" className={style.intro} />
                             <p className={style.saving}>SAVING MADE EASY</p>
                         </div>
-                    </div>
-                    <div className={style['login-view']}>
-                        <Login />
                     </div>
                 </div>
                 <div className={style.container1}>

@@ -1,7 +1,12 @@
+.large {
+  position: relative;
+}
+
 .mobile {
     display: flex;
     flex-direction: column;
     flex-direction: column-reverse;
+    /* background-color: black; */
 }
 
 .container {
@@ -23,7 +28,7 @@
 }
 
 .login-view {
-    display: none;
+    /* display: none; */
 }
 
 .intro {
@@ -48,7 +53,6 @@
 }
 
 .woman {
-    /* height: 100%; */
     object-fit: contain;
     align-self: center;
     width: 80%;

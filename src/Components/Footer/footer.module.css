@@ -47,7 +47,7 @@ footer {
 }
 
 .copyright {
-    background-color: var(--tro-gold);
+    background-color: var(--footer-blue);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@ footer {
 }
 
 .copyright>p {
-    font-size: .8em;
+    font-size: .9em;
     font-family: var(--Montserrat);
     font-weight: var(--medium);
     color: var(--white);

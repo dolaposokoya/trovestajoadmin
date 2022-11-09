@@ -1,23 +1,18 @@
-nav {
-    display: block;
-}
+.headerViewNone {
+    display: none;
 
-nav ul {
+}
+.headerView {
     display: flex;
-    justify-content: flex-start;
-}
-
-nav ul li {
-    display: block;
-    text-decoration: none;
-    list-style: none;
-    padding: 0em .5em;
-}
-
-nav ul li a {
-    text-decoration: none;
-    font-family: var(--Montserrat);
-    font-size: .94em;
-    font-weight: 400;
-    color: var(--tro-blue)
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--tro-blue);
+    overflow-y: hidden;
+    transition: all 500ms;
 }

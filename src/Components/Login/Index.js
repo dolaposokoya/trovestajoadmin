@@ -8,11 +8,11 @@ import eye from '../../Assets/Images/eye.png'
 export default function Index() {
   return (
     <div className={style['login-view']}>
-      <form>
+      <form autoComplete={false}>
         <div className={style.inputview}>
           <img src={person} className={style.absolute} />
           <FormInput
-            placeholder="User ID"
+            placeholder="Enter Your ID"
             type="text"
             className={style.input}
           />
@@ -24,7 +24,7 @@ export default function Index() {
             type="password"
             className={style.input}
           />
-          <img src={eye} className={style.absolute1} />
+          {/* <img src={eye} className={style.absolute1} /> */}
         </div>
         <div className={style.error}>
           <span className={style.errortext}>Wrong password or username Try again</span>
