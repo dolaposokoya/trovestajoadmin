@@ -88,8 +88,13 @@ nav ul li a {
     font-weight: var(--semiBold);
     color: var(--white);
     cursor: pointer;
+    padding-bottom: .2em;
+    transition: all .5s;
 }
 
+nav ul li a:hover {
+    border-bottom: 2px solid var(--white);
+}
 
 @media screen and (min-width: 600px) {
     .harmburger {
@@ -97,7 +102,7 @@ nav ul li a {
     }
 
     .headerViewNone {
-        display: block;
+        display: inline-block;
     }
 
     nav {
@@ -106,6 +111,7 @@ nav ul li a {
         flex-direction: row;
         justify-content: flex-start;
         padding-left: 1em;
+        margin-top: 1em;
     }
 
     nav ul {
@@ -121,7 +127,9 @@ nav ul li a {
         font-size: .94em;
         font-weight: var(--semiBold);
         color: var(--tro-blue);
-        transition: border-bottom .9s;
+        padding-bottom: .2em;
+        margin: .4em;
+        transition: border-bottom .5s;
     }
 
     nav ul li a:hover {
