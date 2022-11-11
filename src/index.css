@@ -1,0 +1,24 @@
+:root {
+  --Montserrat: 'Montserrat', sans-serif;
+  --tro-blue: #01065B;
+  --tro-gold: #CB601A;
+  --tro-brownish: rgba(201, 96, 39, .5);
+  --tro-brown: #7D1312;
+  --white: #FFFFFF;
+  --thin: 100;
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --semiBold: 600;
+  --bold: 700;
+  --error: #FF0000;
+  --cardshadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  --footer-blue: #02042E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}

@@ -1,0 +1,203 @@
+.large {
+  position: relative;
+}
+
+.mobile {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column-reverse;
+    /* background-color: black; */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.introView {
+    margin-top: 3em;
+}
+
+.login-view {
+    /* display: none; */
+}
+
+.intro {
+    width: 15em;
+    height: 12em;
+}
+
+.saving {
+    text-decoration: none;
+    font-family: var(--Montserrat);
+    font-size: 1.25em;
+    font-weight: var(--regular);
+    color: var(--tro-blue);
+    margin: 3em 0em;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: '#F8F9FB';
+}
+
+.woman {
+    object-fit: contain;
+    align-self: center;
+    width: 80%;
+    margin-top: 1em;
+}
+
+.information {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3em .5em;
+    /* width: 100vw; */
+}
+
+.informationtext {
+    padding: 0em 1em;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.informationtext h3 {
+    text-decoration: none;
+    font-family: var(--Montserrat);
+    font-size: 2.3em;
+    font-weight: var(--bold);
+    color: var(--tro-blue);
+    margin-bottom: .3em;
+}
+
+.informationtext h6 {
+    text-decoration: none;
+    font-family: var(--Montserrat);
+    font-size: 1em;
+    font-weight: var(--regular);
+    color: var(--tro-blue);
+    margin-bottom: 1em;
+}
+
+.trustgrid {
+    display: grid;
+    width: 100%;
+    align-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+    gap: 1em;
+    padding: .6em;
+}
+
+.card {
+    box-shadow: var(--cardshadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: .2em;
+    padding: 1em 0em;
+}
+
+.card p {
+    font-family: var(--Montserrat);
+    font-size: .9em;
+    font-weight: var(--semiBold);
+    color: var(--tro-blue);
+}
+
+.card img {
+    margin-bottom: .3em;
+}
+
+.trust {
+    height: 1.5em;
+}
+
+.trust1 {
+    height: 1.5em;
+}
+
+.trust2 {
+    height: 1em;
+}
+
+@media screen and (min-width: 650px) {
+    .mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-view {
+        display: block;
+    }
+
+    /* .large {
+        display: none;
+    } */
+
+    .container1 {
+        background-color: #F8F9FB;
+    }
+
+    .woman {
+        width: 90vw;
+        height: 34em;
+        margin-top: 7em;
+    }
+
+    .information {
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        padding: 0em 2em;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .login-view {
+        display: block;
+        width: 100%;
+    }
+
+    .container1 {
+        flex-direction: row;
+        background-color: #F8F9FB;
+    }
+
+    .information {
+        display: flex;
+        align-self: flex-end;
+        flex-direction: column;
+        margin-bottom: 5em;
+        width: 50%;
+        margin-right: 3em;
+    }
+
+    .woman {
+        width: 50vw;
+        height: 34em;
+        margin-top: 7em;
+    }
+}
