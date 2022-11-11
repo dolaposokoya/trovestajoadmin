@@ -23,7 +23,7 @@
     font-weight: var(--semiBold);
     border: none;
     margin-bottom: .8em;
-    background: transparent;
+    background: transparent !important;
     color: var(--tro-blue);
     border-bottom: 2px solid var(--tro-blue);
 }
@@ -78,16 +78,16 @@
 }
 
 .contacttext {
-    color: var(--white);
+    color: var(--tro-blue);
     font-family: var(--Montserrat);
-    font-size: .75em;
+    font-size: .94em;
     margin-bottom: 1em;
     font-weight: var(--regular);
 }
 .contacttext1 {
-    color: var(--tro-gold);
+    color: var(--tro-brown);
     font-family: var(--Montserrat);
-    font-size: .75em;
+    font-size: .94em;
     margin-bottom: 1em;
     font-weight: var(--regular);
 }

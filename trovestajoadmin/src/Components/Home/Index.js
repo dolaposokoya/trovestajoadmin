@@ -12,18 +12,15 @@ import Footer from '../Footer/Footer';
 export default function Index() {
     return (
         <>
-            <div className={style.large}>
-                <Header />
-            </div>
+            {/* <div className={style.large}> */}
+            <Header />
+            {/* </div> */}
             <div className={style['login-view']}>
-                    <Login />
-                </div>
+                <Login />
+            </div>
             <div className={style.mobile}>
                 <div className={style.container}>
                     <div className={`${style['home-view']}`}>
-                        <div className={style['login-view']}>
-                            <Header />
-                        </div>
                         <div className={style.introView}>
                             <img src={Intro} alt="tro-vest" className={style.intro} />
                             <p className={style.saving}>SAVING MADE EASY</p>

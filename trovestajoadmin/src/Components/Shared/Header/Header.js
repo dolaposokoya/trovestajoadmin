@@ -15,8 +15,8 @@ export default function Header() {
     }
     return (
         <>
-            <div className={show === true ? style.headerView : style.headerViewNone} >
-                <div className={style.harmburger}>
+            <div className={show === true ? style.headerView : style.headerViewNone}>
+                <div div className={style.harmburger}>
                     <div className={style.harmburgerView} onClick={() => changeIcon(false)}>
                         <img src={close} className={style.close} />
                     </div>
@@ -32,13 +32,15 @@ export default function Header() {
                     </nav>
                 </div>
             </div>
-            {<div className={style.harmburger}>
-                <div className={style.harmburgerView} onClick={() => changeIcon(true)}>
-                    <div className={style.harmburger1} />
-                    <div className={style.harmburger2} />
-                    <div className={style.harmburger3} />
+            {
+                <div className={style.harmburger}>
+                    <div className={style.harmburgerView} onClick={() => changeIcon(true)}>
+                        <div className={style.harmburger1} />
+                        <div className={style.harmburger2} />
+                        <div className={style.harmburger3} />
+                    </div>
                 </div>
-            </div>}
+            }
         </>
     )
 }
