@@ -7,11 +7,9 @@ import hamburger from '../../../Assets/Svg/hamburger.svg'
 export default function Header() {
     const [show, setshow] = useState(false)
 
-    useEffect(() => {
-        console.log('show value when page loads', show)
-    }, [show])
+    // useEffect(() => {
+    // }, [show])
     const changeIcon = (value) => {
-        console.log('show === true', value)
         setshow(value)
     }
     return (
