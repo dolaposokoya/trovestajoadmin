@@ -7,6 +7,7 @@ import search from '../../Assets/Svg/search.svg'
 import plus from '../../Assets/Svg/plus.svg'
 import FormInput from '../Shared/FormInput/FormInput'
 import Card from '../Shared/Card/Card'
+import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
@@ -53,7 +54,7 @@ export default function Index() {
         </div>
         <div className={style.dashboard2}>
           <Card styles={style.styles1}>
-            <h3>Send BCM</h3>
+            <Link to="/bcm">Send BCM</Link>
           </Card>
           <Card styles={`${style.styles1} ${style.more}`}>
             <img src={plus} className={style.absolute1} />

@@ -76,6 +76,7 @@
     font-size: .875em;
     border-radius: .5em;
     font-weight: var(--bold);
+    cursor: pointer;
 }
 
 .supportview{

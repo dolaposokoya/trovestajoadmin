@@ -181,11 +181,13 @@
     background-color: var(--tro-brown);
 }
 
-.dashboard2 .styles1 h3 {
+.dashboard2 .styles1 a {
     font-size: .85em;
     font-family: var(--Montserrat);
     font-weight: var(--medium);
     color: var(--white);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .dashboard2 .styles1 img {
