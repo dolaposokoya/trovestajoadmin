@@ -12,7 +12,9 @@ import Footer from '../Footer/Footer';
 
 export default function Index() {
     return (
-        <>
+        <div style={{
+            overflowY: 'hidden'
+        }}>
             {/* <div className={style.large}> */}
             <Header />
             <LoginView />
@@ -54,6 +56,6 @@ export default function Index() {
                 </div>
             </div> */}
             {/* <Footer /> */}
-        </>
+        </div>
     )
 }
