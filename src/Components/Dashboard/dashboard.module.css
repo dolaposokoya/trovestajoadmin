@@ -91,8 +91,8 @@
 
 .notification2 .absolute1 {
     position: absolute;
-    top: 1.8em;
-    right: 5em;
+    top: 1.99em;
+    right: 5.6em;
     width: .8em;
     margin-left: .2em;
 }
@@ -140,7 +140,6 @@
     justify-content: center;
     border-radius: .5em;
 }
-
 .dashboard1 .styles1 h3{
     font-size: 1em;
     font-family: var(--Montserrat);
@@ -153,4 +152,36 @@
     font-family: var(--Montserrat);
     font-weight: var(--regular);
     color: var(--tro-whine);
+}
+
+.dashboard2 {
+    width: 90%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.dashboard2 .styles1{
+    width: 47%;
+    padding: .5em 0em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1em;
+    background-color: var(--tro-blue);
+}
+.dashboard2 .more{
+    background-color: var(--tro-brown);
+}
+.dashboard2 .styles1 h3{
+    font-size: .85em;
+    font-family: var(--Montserrat);
+    font-weight: var(--medium);
+    color: var(--white);
+}
+.dashboard2 .styles1 img{
+    font-size: .85em;
+    width: 5.7em
 }

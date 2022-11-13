@@ -12,7 +12,7 @@
     bottom: 0;
     flex-direction: column;
     height: 100vh;
-    background-color: var(--tro-blue);
+    background-color: var(--white);
     transition: all 500ms;
     z-index: 9999;
 }
@@ -26,7 +26,7 @@
 
 .harmburgerView {
     cursor: pointer;
-    padding: .3em;
+    padding: .2em;
     margin: .2em;
     margin-right: 1em;
     margin-top: 1em;
@@ -36,17 +36,7 @@
     align-items: center;
     flex-direction: column;
     border-radius: .2em;
-    box-shadow: 2px 2px 2px 1px #00000029;
     transition: all 500ms;
-}
-
-.harmburgerView>div {
-    transition: all 500ms;
-    background-color: var(--tro-blue);
-    width: 1.8em;
-    height: .3em;
-    margin: .10em 0em;
-    border-radius: .2em;
 }
 
 .close {
@@ -84,17 +74,31 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     font-family: var(--Montserrat);
-    font-size: .94em;
+    font-size: .875em;
     font-weight: var(--semiBold);
-    color: var(--white);
+    color: var(--tro-brown);
     cursor: pointer;
     padding-bottom: .2em;
     transition: all .5s;
 }
 
-nav ul li a:hover {
-    border-bottom: 2px solid var(--white);
+.connect {
+    text-decoration: none;
+    list-style: none;
+    padding: .6em 3em;
+    margin: 1em 0em;
+    text-align: center; 
+    background-color: var(--tro-brown);
+    border-radius: 1.7em;
 }
+
+.connect a{
+    color: var(--white); 
+}
+
+/* nav ul li a:hover {
+    border-bottom: 2px solid var(--white);
+} */
 
 @media screen and (min-width: 600px) {
     .harmburger {

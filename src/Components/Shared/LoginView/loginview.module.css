@@ -15,15 +15,6 @@
     width: 100%;
     height: 100%;
 }
-
-/* form{
-    background-color: green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 97vw;
-} */
 .inputview {
     position: relative;
     display: flex;
@@ -34,7 +25,7 @@
     padding: .8em 4em;
     padding-left: 2em;
     font-family: var(--Montserrat);
-    font-size: .94em;
+    font-size: .875m;
     font-weight: var(--semiBold);
     border: none;
     margin-bottom: 1.3em;
@@ -42,7 +33,10 @@
     color: var(--tro-blue);
     border-bottom: 2px solid var(--tro-blue);
 }
-
+.input::placeholder {
+    color: var(--tro-blue);
+    font-size: .875em;
+}
 .inputview .absolute {
     position: absolute;
     top: .8em;
@@ -53,9 +47,8 @@
 
 .inputview .absolute1 {
     position: absolute;
-    top: .8em;
-    right: .5em;
-    width: 1.2em;
+    top: 1.2em;
+    right: 0em;
     margin-left: 2em;
 }
 
@@ -96,14 +89,14 @@
 .contacttext {
     color: var(--tro-blue);
     font-family: var(--Montserrat);
-    font-size: .94em;
-    margin-bottom: 1em;
+    font-size: .875em;
+    margin-bottom: .7em;
     font-weight: var(--regular);
 }
 .contacttext1 {
     color: var(--tro-brown);
     font-family: var(--Montserrat);
-    font-size: .94em;
+    font-size: .875em;
     margin-bottom: 1em;
     font-weight: var(--regular);
 }

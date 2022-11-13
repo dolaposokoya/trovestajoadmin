@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import style from './loginview.module.css'
 import FormInput from '../FormInput/FormInput'
 import person from '../../../Assets/Images/person.png'
 import lock from '../../../Assets/Images/lock.png'
 import { Link } from "react-router-dom";
-// import eye from '../../../Assets/Images/eye.png'
+import eye from '../../../Assets/Svg/eye.svg'
 
 export default function LoginView() {
+  const [secure, setsecure] = useState(true)
 
   const loginUser = (event) => {
     event.preventDefault();
@@ -28,10 +29,12 @@ export default function LoginView() {
             <img src={lock} className={style.absolute} />
             <FormInput
               placeholder="Password"
-              type="password"
+              type={secure === true ? 'password': 'text'}
               className={style.input}
             />
-            {/* <img src={eye} className={style.absolute1} /> */}
+            <img src={eye} className={style.absolute1} onClick={() => {
+          setsecure(!secure)
+            }} />
           </div>
           <div className={style.error}>
             <span className={style.errortext}>Wrong password or username Try again</span>
