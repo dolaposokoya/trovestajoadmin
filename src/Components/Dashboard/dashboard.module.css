@@ -20,30 +20,31 @@
     background-image: linear-gradient(180deg, var(--tro-blue), var(--tro-whine));
     width: 100%;
     padding: 2em 0em;
+    padding-top: 1em;
     border-radius: .7em;
 }
 
 .notification {
-    padding: 0em 0em;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .ellipse {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin-right: .5em;
 }
 
 .notification>img {
     width: .8em;
-    margin: 0em .7em;
+    margin: 0em .5em;
 }
 
 .ellipse img {
-    margin: .1em .5em;
+    margin: .1em .3em;
 }
 
 .notification1 {
@@ -92,7 +93,7 @@
 
 .notification2 .absolute1 {
     position: absolute;
-    top: 1.99em;
+    top: 1.85em;
     right: 5.6em;
     width: .8em;
     margin-left: .2em;
@@ -231,8 +232,9 @@
     margin: .8em 0em;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    padding: .8em 0em;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8em .3em;
     margin-bottom: .2em;
 }
 

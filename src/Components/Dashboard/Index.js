@@ -65,9 +65,10 @@ export default function Index() {
         }}>
           <div style={{
             display: 'flex',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            alignItems: 'center'
           }}>
-            <h2 className={style.registered}>Registered Agent</h2>
+            <h2 className={style.registered}>Registered Agents</h2>
             <h2 className={style.seeall}>See all</h2>
           </div>
           <div className={style.tablehead}>
