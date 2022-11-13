@@ -59,6 +59,49 @@ export default function Index() {
             <img src={plus} className={style.absolute1} />
           </Card>
         </div>
+        <div style={{
+          width: '100%',
+          paddingBottom: '1em'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between'
+          }}>
+            <h2 className={style.registered}>Registered Agent</h2>
+            <h2 className={style.seeall}>See all</h2>
+          </div>
+          <div className={style.tablehead}>
+            <h3>Name</h3>
+            <h3>Date Created</h3>
+            <h3>Amount</h3>
+          </div>
+          <Card styles={style.tabledata}>
+            <div className={style.details}>
+              <div className={style.cycle} />
+              <div className={style.namedetails}>
+                <h3>Akindele Joshua A</h3>
+                <p>AG-2657002</p>
+              </div>
+            </div>
+            <h3>15/10/2022</h3>
+            <div className={style.amount}>
+              <h3>$3,532.00</h3>
+            </div>
+          </Card>
+          <Card styles={style.tabledata}>
+            <div className={style.details}>
+              <div className={style.cycle} />
+              <div className={style.namedetails}>
+                <h3>Akindele Joshua A</h3>
+                <p>AG-2657002</p>
+              </div>
+            </div>
+            <h3>15/10/2022</h3>
+            <div className={style.amount}>
+              <h3>$3,532.00</h3>
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   )
