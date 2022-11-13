@@ -5,7 +5,7 @@ import person from '../../Assets/Images/person.png'
 import lock from '../../Assets/Images/lock.png'
 import eye from '../../Assets/Images/eye.png'
 
-export default function Index() {
+export default function LoginView() {
   return (
     <div className={style['login-view']}>
       <form autoComplete={false}>

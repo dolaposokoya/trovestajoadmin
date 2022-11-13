@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Shared/Header/Header';
+import LoginView from '../Shared/LoginView/LoginView';
 import Login from '../Login/Index'
 import style from './home.module.css'
 import Intro from '../../Assets/Images/Intro.png'
@@ -14,11 +15,12 @@ export default function Index() {
         <>
             {/* <div className={style.large}> */}
             <Header />
+            <LoginView />
             {/* </div> */}
-            <div className={style['login-view']}>
-                <Login />
-            </div>
-            <div className={style.mobile}>
+            {/* <div className={style['login-view']}>
+                <LoginView />
+            </div> */}
+            {/* <div className={style.mobile}>
                 <div className={style.container}>
                     <div className={`${style['home-view']}`}>
                         <div className={style.introView}>
@@ -50,8 +52,8 @@ export default function Index() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
+            </div> */}
+            {/* <Footer /> */}
         </>
     )
 }

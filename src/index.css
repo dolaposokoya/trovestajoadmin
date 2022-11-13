@@ -1,10 +1,14 @@
+/*  Go thorough the readme file to understand why em units is used instead of px unit for sizes. */
+
 :root {
   --Montserrat: 'Montserrat', sans-serif;
   --tro-blue: #01065B;
+  --tro-whine: #7C1516;
   --tro-gold: #CB601A;
-  --tro-brownish: rgba(201, 96, 39, .5);
+  --tro-brownish: rgba(201, 96, 39, .2);
   --tro-brown: #7D1312;
-  --white: #FFFFFF;
+  --white: rgb(255, 255, 255);
+  --white-linear: rgb(255, 255, 255,.08);
   --thin: 100;
   --light: 300;
   --regular: 400;
