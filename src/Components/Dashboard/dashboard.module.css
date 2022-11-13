@@ -50,17 +50,18 @@
 .notification1 {
     padding-left: 1em;
     padding-bottom: 1em;
+    margin-top: 1em;
 }
 
 .notification1 h3 {
-    font-size: 2em;
-    font-family: var(--Montserrat);
-    font-weight: var(--semiBold);
+    font-size: 4.875em;
+    font-family: var(--MoolBoran);
+    font-weight: var(--regular);
     color: var(--white);
+    margin-bottom: -.4em;
 }
 
 .notification1 p {
-    margin-top: .5em;
     font-size: .9em;
     font-family: var(--Montserrat);
     font-weight: var(--regular);
@@ -118,11 +119,11 @@
 }
 
 .styles p {
-    font-size: 1.3em;
-    font-family: var(--Montserrat);
+    font-size: 3.25em;
+    font-family: var(--MoolBoran);
     font-weight: var(--regular);
     color: var(--tro-whine);
-    margin-bottom: .2em;
+    margin-bottom: -.9em;
 }
 
 .dashboard1 {
@@ -152,10 +153,11 @@
 }
 
 .dashboard1 .styles1 p {
-    font-size: 2em;
-    font-family: var(--Montserrat);
+    font-size: 5.125em;
+    font-family: var(--MoolBoran);
     font-weight: var(--regular);
     color: var(--tro-whine);
+    margin-bottom: -.6em;
 }
 
 .dashboard2 {
@@ -197,11 +199,11 @@
 
 .registered {
     color: var(--tro-blue);
-    font-family: var(--Montserrat);
+    font-family: var(--MoolBoran);
     font-weight: var(--semiBold);
-    font-size: 1.2em;
+    font-size: 2.1875em;
     text-align: left;
-    /* width: 100%; */
+    margin-bottom: -.9em;
     padding-bottom: 1em;
 }
 

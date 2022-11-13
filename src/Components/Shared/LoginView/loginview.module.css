@@ -18,10 +18,9 @@
 }
 .logintext{
     width:80%;
-    margin-bottom: 2em;
     color: var(--tro-blue);
-    font-family: var(--Montserrat);
-    font-size: 1.5em;
+    font-family: var(--MoolBoran);
+    font-size: 4.6875em;
     font-weight: var(--bold);
 }
 .dropdownlist{

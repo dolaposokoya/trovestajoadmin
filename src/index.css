@@ -1,7 +1,11 @@
 /*  Go thorough the readme file to understand why em units is used instead of px unit for sizes. */
-
+@font-face {
+  font-family: "MoolBoran";
+  src: url("../src/Assets/Fonts/moolbor_0.ttf");
+}
 :root {
   --Montserrat: 'Montserrat', sans-serif;
+  --MoolBoran: MoolBoran;
   --tro-blue: #01065B;
   --tro-whine: #7C1516;
   --tro-gold: #CB601A;
