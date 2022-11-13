@@ -240,6 +240,10 @@
     margin-bottom: .2em;
 }
 
+.date{
+    margin: .8em 0em;
+    width: 30%;
+}
 .cycle {
     background-color: var(--tro-blue);
     width: 1.375em;

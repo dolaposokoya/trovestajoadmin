@@ -85,7 +85,7 @@ export default function Index() {
                 <p>AG-2657002</p>
               </div>
             </div>
-            <h3>15/10/2022</h3>
+            <h3 className={style.date}>15/10/2022</h3>
             <div className={style.amount}>
               <h3>$3,532.00</h3>
             </div>
@@ -98,7 +98,7 @@ export default function Index() {
                 <p>AG-2657002</p>
               </div>
             </div>
-            <h3>15/10/2022</h3>
+            <h3 className={style.date}>15/10/2022</h3>
             <div className={style.amount}>
               <h3>$3,532.00</h3>
             </div>
