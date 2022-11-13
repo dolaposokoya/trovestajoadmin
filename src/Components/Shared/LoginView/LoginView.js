@@ -16,6 +16,14 @@ export default function LoginView() {
   return (
     <div className={style['login-view1']}>
       <div className={style['login-view']}>
+        <h3 className={style.logintext}>Login</h3>
+        <div className={style.dropdown}>
+          <select className={style.dropdownlist}>
+            <option>Select User Type</option>
+            <option>Admin</option>
+            <option>Super Admin</option>
+          </select>
+        </div>
         <form>
           <div className={style.inputview}>
             <img src={person} className={style.absolute} />
