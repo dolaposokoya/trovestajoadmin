@@ -1,5 +1,6 @@
 .headerViewNone {
     display: none;
+    transition: all 500ms;
 }
 
 .headerView {
@@ -20,17 +21,19 @@
 .harmburger {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-self: flex-start;
+}
+
+.logo {
+    width: 7.5em;
+    height: 2.1em;
 }
 
 .harmburgerView {
     cursor: pointer;
-    padding: .2em;
-    margin: .2em;
-    margin-right: 1em;
-    margin-top: 1em;
-    background-color: var(--white);
+    padding: .2em 1.2em;
+    padding-top: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 500ms;
 }
 
 nav {
