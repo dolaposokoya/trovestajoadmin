@@ -34,7 +34,7 @@ export default function LoginView() {
             />
           </div>
           <div className={style.inputview}>
-            <img src={lock} className={style.absolute} />
+            <img src={lock} className={style.absolute2} />
             <FormInput
               placeholder="Password"
               type={secure === true ? 'password': 'text'}

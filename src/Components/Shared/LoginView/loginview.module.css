@@ -32,17 +32,18 @@
     font-family: var(--Montserrat);
     font-size: .87m;
     font-weight: var(--regular);
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
 }
 .inputview {
     position: relative;
     display: flex;
-    width: 95%;
+    width: 18.75em;
 }
 
 .input {
-    padding: .8em 4em;
-    padding-left: 2em;
+    width: 100%;
+    padding: .8em 2em;
+    /* padding-left: 2em; */
     font-family: var(--Montserrat);
     font-size: .875m;
     font-weight: var(--semiBold);
@@ -60,15 +61,23 @@
 .inputview .absolute {
     position: absolute;
     top: .8em;
-    left: .1em;
-    width: .9em;
-    height: 1em;
+    left: .3em;
+    width: .625em;
+    height: .625em;
+}
+.inputview .absolute2 {
+    position: absolute;
+    top: .8em;
+    left: .3em;
+    width: .625em;
+    height: .825em;
 }
 
 .inputview .absolute1 {
     position: absolute;
     top: 1.2em;
-    right: 0em;
+    right: .75em;
+    height: .51125;
     margin-left: 2em;
 }
 
@@ -84,6 +93,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 18.75em;
 }
 
 .btnview button {
