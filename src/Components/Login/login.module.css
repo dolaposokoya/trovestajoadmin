@@ -1,46 +1,84 @@
+.login-view1 {
+    background: url('../../Assets/Images/homelogo.png') no-repeat;
+    object-fit: fill;
+    display: flex;
+    width: 100vw;
+    justify-content: flex-end;
+    height: 91vh;
+    /* height: calc(100vh - 3em); */
+    overflow-y: hidden;
+}
 .login-view {
     background-image: linear-gradient(180deg, var(--white), var(--tro-brownish));
-    padding: 8em 0em;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: column;
     position: relative;
     width: 100%;
+    height: 100%;
+    overflow-y: hidden;
 }
-
+.logintext{
+    width:80%;
+    color: var(--tro-blue);
+    font-family: var(--MoolBoran);
+    font-size: 4.6875em;
+    font-weight: var(--bold);
+}
+.dropdownlist{
+    border: none;
+    background-color: transparent;
+    color: var(--tro-brown);
+    font-family: var(--Montserrat);
+    font-size: .87m;
+    font-weight: var(--regular);
+    margin-bottom: 2em;
+}
 .inputview {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-content: center;
+    width: 18.75em;
 }
 
 .input {
-    padding: .8em 2.3em;
-    padding-right: 8em;
+    width: 100%;
+    padding: .8em 2em;
+    /* padding-left: 2em; */
     font-family: var(--Montserrat);
-    font-size: .94em;
+    font-size: .875m;
     font-weight: var(--semiBold);
     border: none;
-    margin-bottom: .8em;
+    margin-bottom: 1.3em;
     background: transparent !important;
     color: var(--tro-blue);
+    border-radius: 0em;
     border-bottom: 2px solid var(--tro-blue);
 }
-
+.input::placeholder {
+    color: var(--tro-blue);
+    font-size: .875em;
+}
 .inputview .absolute {
     position: absolute;
     top: .8em;
-    left: .5em;
-    width: .9em;
-    height: 1em;
+    left: .3em;
+    width: .625em;
+    height: .625em;
+}
+.inputview .absolute2 {
+    position: absolute;
+    top: .8em;
+    left: .3em;
+    width: .625em;
+    height: .825em;
 }
 
 .inputview .absolute1 {
     position: absolute;
-    top: .8em;
-    right: .5em;
-    width: 1.2em;
+    top: 1.2em;
+    right: .75em;
+    height: .51125;
     margin-left: 2em;
 }
 
@@ -56,17 +94,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 18.75em;
 }
 
 .btnview button {
     width: 100%;
+    height: 3.125em;
     border: none;
     color: var(--white);
-    padding: .7em 0em;
-    background-color: var(--tro-gold);
+    background-color: var(--tro-blue);
     font-family: var(--Montserrat);
-    font-size: .88em;
+    font-size: .875em;
+    border-radius: .5em;
     font-weight: var(--bold);
+    cursor: pointer;
 }
 
 .supportview{
@@ -80,14 +121,14 @@
 .contacttext {
     color: var(--tro-blue);
     font-family: var(--Montserrat);
-    font-size: .94em;
-    margin-bottom: 1em;
+    font-size: .875em;
+    margin-bottom: .7em;
     font-weight: var(--regular);
 }
 .contacttext1 {
     color: var(--tro-brown);
     font-family: var(--Montserrat);
-    font-size: .94em;
+    font-size: .875em;
     margin-bottom: 1em;
     font-weight: var(--regular);
 }

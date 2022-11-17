@@ -181,6 +181,7 @@
 
 .dashboard2 .more {
     background-color: var(--tro-brown);
+    cursor: pointer;
 }
 
 .dashboard2 .styles1 a {

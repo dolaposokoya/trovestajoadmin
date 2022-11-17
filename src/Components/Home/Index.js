@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Header from '../Shared/Header/Header';
 import LoginView from '../Shared/LoginView/LoginView';
 import Login from '../Login/Index'
@@ -9,8 +9,20 @@ import nature from '../../Assets/Images/nature.png'
 import balance from '../../Assets/Images/balance.png'
 import supervisor from '../../Assets/Images/supervisor.png'
 import Footer from '../Footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserAction } from '../../Reducers/user.reducer';
+
+
+
+
 
 export default function Index() {
+    const dispatch = useDispatch()
+    const { auth } = useSelector(state => state)
+    console.log('Auu',auth)
+    useEffect(() => {
+        dispatch(getUserAction())
+    }, [])
     return (
         <div style={{
             overflowY: 'hidden'
