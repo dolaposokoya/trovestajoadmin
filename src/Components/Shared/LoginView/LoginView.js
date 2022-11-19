@@ -46,10 +46,10 @@ export default function LoginView(props) {
         if (token) {
           dispatch(setAdminAction(adminData))
           const jsonData = JSON.stringify(response.data.data)
-          sessionStorage.setItem(user_storage_token, token)
-          sessionStorage.setItem(user_storage_name, jsonData)
-          setloading(false);
+          localStorage.setItem(user_storage_token, token)
+          localStorage.setItem(user_storage_name, jsonData)
           navigate('/dashboard')
+          setloading(false);
         }
         else {
           alert(message)

@@ -25,9 +25,9 @@ export default function Index() {
     checkToken()
   }, [])
 
-  const adminToken = sessionStorage.getItem(user_storage_token)
+  const adminToken = localStorage.getItem(user_storage_token)
   const checkToken = () => {
-    const adminData = sessionStorage.getItem(user_storage_name)
+    const adminData = localStorage.getItem(user_storage_name)
     adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
     if (adminToken === null) {
       navigate('/')

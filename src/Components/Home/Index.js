@@ -14,12 +14,11 @@ import { user_storage_token } from '../../config';
 import { Link, redirect, useNavigate } from "react-router-dom";
 
 
-
 export default function Index() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { auth } = useSelector(state => state)
-    const adminToken = sessionStorage.getItem(user_storage_token)
+    const adminToken = localStorage.getItem(user_storage_token)
     useEffect(() => {
         if (adminToken !== null) {
             navigate('/dashboard')

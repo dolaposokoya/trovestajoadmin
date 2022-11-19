@@ -12,7 +12,7 @@ export default function App() {
         checkToken()
     }, [])
     const checkToken = () => {
-        const adminToken = sessionStorage.getItem(user_storage_token)
+        const adminToken = localStorage.getItem(user_storage_token)
         if (adminToken !== null) {
             settoken(adminToken)
         }
@@ -29,6 +29,10 @@ export default function App() {
         {
             path: '/dashboard',
             element: token ? <Dashboard /> : <Home />
+        },
+        {
+            path: '/bcm',
+            element: token ? <BroadCast /> : <Home />
         },
     ])
     return (

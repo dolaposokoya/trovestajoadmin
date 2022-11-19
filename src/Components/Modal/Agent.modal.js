@@ -39,7 +39,7 @@ export default function AgentModal(props) {
         } else {
             const data = {
                 data: agentData,
-                token: sessionStorage.getItem(user_storage_token)
+                token: localStorage.getItem(user_storage_token)
             }
             setloading(true)
             const response = await createdminAgent(data)
