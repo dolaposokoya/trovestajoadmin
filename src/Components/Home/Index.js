@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Shared/Header/Header';
 import LoginView from '../Shared/LoginView/LoginView';
 import Login from '../Login/Index'
@@ -10,26 +10,29 @@ import balance from '../../Assets/Images/balance.png'
 import supervisor from '../../Assets/Images/supervisor.png'
 import Footer from '../Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAction } from '../../Reducers/user.reducer';
-
-
+import { user_storage_token } from '../../config';
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 
 
 export default function Index() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { auth } = useSelector(state => state)
-    console.log('Auu',auth)
+    const adminToken = sessionStorage.getItem(user_storage_token)
     useEffect(() => {
-        dispatch(getUserAction())
+        if (adminToken !== null) {
+            navigate('/dashboard')
+        }
     }, [])
+
     return (
         <div style={{
             overflowY: 'hidden'
         }}>
             {/* <div className={style.large}> */}
             <Header />
-            <LoginView />
+            <LoginView navigate={navigate} />
             {/* </div> */}
             {/* <div className={style['login-view']}>
                 <LoginView />

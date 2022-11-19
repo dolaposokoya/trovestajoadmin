@@ -1,39 +1,35 @@
-import { AGENT_REQUEST, CREATE_AGENT } from '../Actions/Actions'
+import { ADMIN_LOGIN, ADMIN_REQUEST } from '../Actions/Actions'
 import { user_storage_name } from '../config'
 
 const initialState = {
     data: {},
-    message: '',
-    success: false,
-    loading: true
+    token: ''
 }
 
-export const addAgentAction = (action) => {
+
+export const loginAdminAction = (action) => {
     return {
-        type: AGENT_REQUEST,
-        payload: action,
-    }
-}
-export const createAgentAction = (action) => {
-    return {
-        type: CREATE_AGENT,
-        success: action.success,
-        message: action.message,
-        data: action.payload,
-        loading: action.loading
+        type: ADMIN_REQUEST,
+        payload: action
     }
 }
 
+export const setAdminAction = (action) => {
+    return {
+        type: ADMIN_LOGIN,
+        data: action.data,
+        token: action.token
+    }
+}
 
-export const addAgentReducer = (state = initialState, action) => {
+
+export const adminReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CREATE_AGENT:
+        case ADMIN_LOGIN:
             return {
                 ...state,
-                success: action.success,
                 data: action.data,
-                message: action.message,
-                loading: action.loading
+                token: action.token
             }
         default:
             return state;

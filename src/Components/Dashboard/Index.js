@@ -7,17 +7,37 @@ import search from '../../Assets/Svg/search.svg'
 import plus from '../../Assets/Svg/plus.svg'
 import FormInput from '../Shared/FormInput/FormInput'
 import Card from '../Shared/Card/Card'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AgentModal from '../Modal/Agent.modal'
+import { useSelector } from 'react-redux'
+import { user_storage_token, user_storage_name } from '../../config'
+import Loader from '../Modal/Loader'
+
 
 export default function Index() {
-
+  const navigate = useNavigate()
+  const { auth } = useSelector(state => state)
   const [openModal, setopenModal] = useState(false)
+  const [admin, setadmin] = useState({})
+  const [loading, setloading] = useState(false)
 
-  console.log('Opeee', openModal)
+  useEffect(() => {
+    checkToken()
+  }, [])
+
+  const adminToken = sessionStorage.getItem(user_storage_token)
+  const checkToken = () => {
+    const adminData = sessionStorage.getItem(user_storage_name)
+    adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
+    if (adminToken === null) {
+      navigate('/')
+    }
+  }
   return (
     <>
+      {loading && <Loader />}
       <div className={style.container}>
+        {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} />}
         <div className={style.dashboard}>
           <div className={style.dashboardintro}>
             <div className={style.notification}>
@@ -30,7 +50,7 @@ export default function Index() {
               </div>
             </div>
             <div className={style.notification1}>
-              <h3>Hi James</h3>
+              <h3>Hi {admin.first_name}</h3>
               <p>How are you doing today?</p>
             </div>
             <div className={style.notification2}>
@@ -62,10 +82,7 @@ export default function Index() {
             <Card styles={style.styles1}>
               <Link to="/bcm">Send BCM</Link>
             </Card>
-            <Card styles={`${style.styles1} ${style.more}`} onClick={() => {
-              console.log('Openmodal', openModal)
-              setopenModal(true)
-            }} >
+            <Card styles={`${style.styles1} ${style.more}`} onClick={() => setopenModal(true)} >
               <img src={plus} />
             </Card>
           </div>
@@ -115,7 +132,6 @@ export default function Index() {
           </div>
         </div>
       </div>
-      {openModal === true && <AgentModal setopenModal={setopenModal} />}
     </>
   )
 }

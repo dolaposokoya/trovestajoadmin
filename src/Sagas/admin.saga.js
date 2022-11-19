@@ -1,19 +1,24 @@
 import { call, put } from "redux-saga/effects";
-import { createdminAgent } from './Requests'
-import { createAgentAction } from '../Reducers/admin.reducer'
-import { AGENT_REQUEST, CREATE_AGENT } from '../Actions/Actions'
+import { createdminAgent, loginAdminRequest } from './Requests'
+import { setAdminAction } from '../Reducers/admin.reducer'
+import { ADMIN_LOGIN } from '../Actions/Actions'
 
-export function* addAgentUserSaga(action) {
+
+export function* setAdminReducer(action) {
     try {
-        const response = yield call(createdminAgent, action.payload);
-        const { success, message, data } = response.data;
+        // const response = yield call(loginAdminRequest, action.payload);
+        // const { success, message, data, token } = response.data;
+        const { success, message, data, token } = action;
         if (success === true) {
-            yield put(createAgentAction({ type: CREATE_AGENT, payload: data, success, message: message, loading: false }));
+            yield put(setAdminAction({ type: ADMIN_LOGIN, data: data, success, message: message, token: token }));
         }
         else {
-            yield put(createAgentAction({ type: CREATE_AGENT, payload: {}, success, message: message, loading: false }));
+            yield put(setAdminAction({ type: ADMIN_LOGIN, data: {}, success, message: message, token: '' }));
         }
     } catch (error) {
-        yield put(createAgentAction({ type: CREATE_AGENT, payload: {}, success: false, message: error.message, loading: false }));
+        yield put(setAdminAction({ type: ADMIN_LOGIN, data: {}, success: false, message: error.message, token: '' }));
     }
 }
+
+
+

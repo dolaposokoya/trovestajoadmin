@@ -7,6 +7,10 @@ import eye from '../../Assets/Svg/eye.svg'
 
 export default function Login() {
   const [secure, setsecure] = useState(true)
+  const [adminData, setadminData] = useState({
+    email: '',
+    password: '',
+  })
 
   const loginUser = (event) => {
     event.preventDefault();

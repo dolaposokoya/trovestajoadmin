@@ -1,14 +1,13 @@
-import { takeLatest,all } from "redux-saga/effects";
-import { SIGN_IN_REQUEST,AGENT_REQUEST } from "../Actions/Actions";
-import { loginUserSaga } from './user.saga'
-import { addAgentUserSaga } from './admin.saga'
+import { takeLatest, all } from "redux-saga/effects";
+import { AGENT_REQUEST, ADMIN_REQUEST,ADMIN_LOGIN } from "../Actions/Actions";
+import { setAdminReducer } from './admin.saga'
+import { addAgentUserSaga } from './agent.saga'
 
 
 export function* watcherSaga() {
   yield all([
-    takeLatest(SIGN_IN_REQUEST, loginUserSaga),
-    takeLatest(AGENT_REQUEST, addAgentUserSaga)
+    // takeLatest(ADMIN_LOGIN, setAdminReducer),
+    takeLatest(ADMIN_REQUEST, setAdminReducer),
+    takeLatest(AGENT_REQUEST, addAgentUserSaga),
   ])
-    // yield takeLatest(SIGN_IN_REQUEST, loginUserSaga);
-    // yield takeLatest(AGENT_REQUEST, addAgentUserSaga);
-  }
+}
