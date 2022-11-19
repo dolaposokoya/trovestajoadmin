@@ -27,8 +27,8 @@ export default function App() {
             element: <Home />
         },
         {
-            path: token && '/dashboard',
-            element: token && <Dashboard />
+            path: '/dashboard',
+            element: token ? <Dashboard /> : <Home />
         },
     ])
     return (
