@@ -36,7 +36,7 @@ export default function App() {
         },
         {
             path: '/bcm',
-            element: token ? <BroadCast /> : <Home />
+            element: <BroadCast />
         },
     ])
     return (
