@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Home from '../Components/Home/Index'
 import Dashboard from '../Components/Dashboard/Index'
 import BroadCast from '../Components/BroadCast/Index'
-import { createBrowserRouter, Route, Routes, RouterProvider,useNavigate  } from "react-router-dom";
+import { createBrowserRouter, Route, Routes, RouterProvider, useNavigate } from "react-router-dom";
 import { user_storage_token } from "../config";
 
 export default function App() {
@@ -27,7 +27,7 @@ export default function App() {
             element: <Home />
         },
         {
-            path: '/dashboard',
+            path: token ? '/dashboard' : '/',
             element: token ? <Dashboard /> : <Home />
         },
     ])
