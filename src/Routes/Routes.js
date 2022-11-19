@@ -27,8 +27,12 @@ export default function App() {
             element: <Home />
         },
         {
+            path: '/',
+            element: !token && <Home />
+        },
+        {
             path: '/dashboard',
-            element: token ? <Dashboard /> : <Home />
+            element: <Dashboard />
         },
         {
             path: '/bcm',
