@@ -9,21 +9,77 @@ import FormInput from '../Shared/FormInput/FormInput'
 import Card from '../Shared/Card/Card'
 import { Link, useNavigate } from "react-router-dom";
 import AgentModal from '../Modal/Agent.modal'
-import { useSelector } from 'react-redux'
-import { user_storage_token, user_storage_name } from '../../config'
+import { useSelector, useDispatch } from 'react-redux'
+import { user_storage_token, user_storage_name, dateFormat, convertToThousand, Naira } from '../../config'
 import Loader from '../Modal/Loader'
+import { getAdminAgents } from '../../Sagas/Requests'
+import { setAgentAction } from '../../Reducers/agent.reducer'
+
 
 
 export default function Index() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { auth } = useSelector(state => state)
   const [openModal, setopenModal] = useState(false)
   const [admin, setadmin] = useState({})
   const [loading, setloading] = useState(false)
+  const [skip, setskip] = useState(0)
+  const [limit, setlimit] = useState(10)
+  const [agents, setagents] = useState([])
 
+  // console.log('auth', auth)
   useEffect(() => {
     checkToken()
+    getAgents()
   }, [])
+
+  useEffect(() => {
+    getAgents()
+  }, [skip, limit])
+
+  const getAgents = async () => {
+try {
+  const token = localStorage.getItem(user_storage_token)
+  const payload = {
+    token: token,
+    skip: skip,
+    limit: limit
+  }
+  setloading(true)
+  const response = await getAdminAgents(payload)
+  const { data, message, success } = response.data
+  if (success === true) {
+    dispatch(setAgentAction(data))
+    setagents(data.agents)
+    setloading(false)
+  }
+  else {
+    setloading(false)
+    alert(message)
+  }
+} catch (error) {
+  setloading(false)
+  alert(error.message)
+}
+  }
+
+  const getTotalAgents = async () => {
+    const token = localStorage.getItem(user_storage_token)
+    const payload = {
+      token: token,
+      skip: skip,
+      limit: limit
+    }
+    const response = await getAdminAgents(payload)
+    const { data, message, success } = response.data
+    if (success === true) {
+      setagents(data)
+    }
+    else {
+      alert(message)
+    }
+  }
 
   const adminToken = localStorage.getItem(user_storage_token)
   const checkToken = () => {
@@ -33,11 +89,22 @@ export default function Index() {
       navigate('/')
     }
   }
+  const totalGenerated = () => {
+    let total = 0;
+    agents.map(item => {
+      total += item.amount
+    })
+    return total
+  }
+
+  const navigateToAgent = (id) => {
+    navigate(`/dashboard/agent/${id}`)
+  }
   return (
     <>
       {loading && <Loader />}
       <div className={style.container}>
-        {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} />}
+        {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} getAgents={getAgents} />}
         <div className={style.dashboard}>
           <div className={style.dashboardintro}>
             <div className={style.notification}>
@@ -65,13 +132,13 @@ export default function Index() {
           <div className={style.dashboard}>
             <Card styles={style.styles}>
               <h3>Total Revenue</h3>
-              <p>$56700,0454</p>
+              <p>{`${convertToThousand(totalGenerated())}`}</p>
             </Card>
           </div>
           <div className={style.dashboard1}>
             <Card styles={style.styles1}>
               <h3>Total Agents</h3>
-              <p>64</p>
+              <p>{agents?.length}</p>
             </Card>
             <Card styles={style.styles1}>
               <h3>Total Clients</h3>
@@ -103,32 +170,23 @@ export default function Index() {
               <h3>Date Created</h3>
               <h3>Amount</h3>
             </div>
-            <Card styles={style.tabledata}>
-              <div className={style.details}>
-                <div className={style.cycle} />
-                <div className={style.namedetails}>
-                  <h3>Akindele Joshua A</h3>
-                  <p>AG-2657002</p>
+            {agents?.map((item) =>
+            (
+              <Card styles={style.tabledata} key={item._id} onClick={() => navigateToAgent(item._id)}>
+                <div className={style.details}>
+                  <div className={style.cycle} />
+                  <div className={style.namedetails}>
+                    <h3>{`${item.first_name} ${item.last_name}`}</h3>
+                    <p>{item.assigned_id}</p>
+                  </div>
                 </div>
-              </div>
-              <h3 className={style.date}>15/10/2022</h3>
-              <div className={style.amount}>
-                <h3>$3,532.00</h3>
-              </div>
-            </Card>
-            <Card styles={style.tabledata}>
-              <div className={style.details}>
-                <div className={style.cycle} />
-                <div className={style.namedetails}>
-                  <h3>Akindele Joshua A</h3>
-                  <p>AG-2657002</p>
+                <h3 className={style.date}>{dateFormat(item.createdAt)}</h3>
+                <div className={style.amount}>
+                  <h3>{`${convertToThousand(item?.amount || 0)}`}</h3>
                 </div>
-              </div>
-              <h3 className={style.date}>15/10/2022</h3>
-              <div className={style.amount}>
-                <h3>$3,532.00</h3>
-              </div>
-            </Card>
+              </Card>
+            )
+            )}
           </div>
         </div>
       </div>

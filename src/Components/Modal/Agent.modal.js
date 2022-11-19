@@ -10,8 +10,7 @@ import Loader from './Loader'
 
 
 export default function AgentModal(props) {
-    const { setopenModal, auth, setloading,loading } = props
-    const dispatch = useDispatch()
+    const { setopenModal, auth, setloading,loading,getAgents } = props
     const { agents } = useSelector(state => state)
     const [agentData, setagentData] = useState({
         first_name: '',
@@ -50,9 +49,8 @@ export default function AgentModal(props) {
             }
             else {
                 setopenModal(false)
-                // dispatch(setAgentAction(newAgent))
-                setloading(false)
                 alert(message)
+                getAgents()
             }
         }
     }

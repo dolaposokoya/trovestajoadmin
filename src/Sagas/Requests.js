@@ -22,11 +22,33 @@ export const createdminAgent = (data) => {
     return axios(requestOptions);
 }
 
-export const getAgents = (token) => {
+export const getAdminAgents = (payload) => {
+    const { skip, limit, token } = payload
     headers.authorization = `Bearer ${token}`
     const requestOptions = {
-        method: "post",
-        url: `${baseUrl}/admin/create-agent`,
+        method: "get",
+        url: `${baseUrl}/admin/get-admin`,
+        headers: headers,
+    }
+    return axios(requestOptions);
+}
+
+export const getTotalAgents = (payload) => {
+    const { skip, limit, token } = payload
+    headers.authorization = `Bearer ${token}`
+    const requestOptions = {
+        method: "get",
+        url: `${baseUrl}/admin/get-admin-agents?skip=${skip}&limit=${limit}`,
+        headers: headers,
+    }
+    return axios(requestOptions);
+}
+
+export const getAdmin = (token) => {
+    headers.authorization = `Bearer ${token}`
+    const requestOptions = {
+        method: "get",
+        url: `${baseUrl}/admin/get-admin`,
         headers: headers,
     }
     return axios(requestOptions);

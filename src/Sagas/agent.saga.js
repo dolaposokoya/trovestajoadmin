@@ -1,5 +1,5 @@
 import { call, put } from "redux-saga/effects";
-import { createdminAgent,getAgents } from './Requests'
+import { createdminAgent,getAdminAgents } from './Requests'
 import { setAgentAction } from '../Reducers/agent.reducer'
 import { CREATE_AGENT, GET_AGENTS } from '../Actions/Actions'
 
@@ -20,7 +20,7 @@ export function* addAgentUserSaga(action) {
 
 export function* getAgentSaga(action) {
     try {
-        const response = yield call(getAgents, action.payload);
+        const response = yield call(getAdminAgents, action.payload);
         const { success, message, data } = response.data;
         if (success === true) {
             yield put(setAgentAction({ type: GET_AGENTS, payload: data, success, message: message, loading: false }));

@@ -119,11 +119,11 @@
 }
 
 .styles p {
-    font-size: 3.25em;
-    font-family: var(--MoolBoran);
+    font-size: 2.8em;
+    font-family: var(--Montserrat);
     font-weight: var(--regular);
     color: var(--tro-whine);
-    margin-bottom: -.9em;
+    margin-bottom: -.3em;
 }
 
 .dashboard1 {

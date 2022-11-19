@@ -1,4 +1,4 @@
-import { AGENT_REQUEST, CREATE_AGENT, GET_AGENTS } from '../Actions/Actions'
+import { AGENT_REQUEST, CREATE_AGENT, GET_AGENTS,SET_AGENTS } from '../Actions/Actions'
 import { user_storage_name } from '../config'
 
 const initialState = {
@@ -16,12 +16,13 @@ export const addAgentAction = (action) => {
 
 export const setAgentAction = (action) => {
     return {
-        type: AGENT_REQUEST,
-        data: action.payload,
+        type: SET_AGENTS,
+        agents: action.agents,
     }
 }
 
 export const agentReducer = (state = initialState, action) => {
+    console.log('action action',action)
     switch (action.type) {
         case CREATE_AGENT:
             return {
@@ -33,6 +34,11 @@ export const agentReducer = (state = initialState, action) => {
                 ...state,
                 agents: action.data,
             }
+            case SET_AGENTS:
+                return {
+                    ...state,
+                    agents: action.agents,
+                }
         default:
             return state;
     }

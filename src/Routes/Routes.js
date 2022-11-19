@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Home from '../Components/Home/Index'
 import Dashboard from '../Components/Dashboard/Index'
+import Agent from '../Components/Dashboard/Agent'
 import BroadCast from '../Components/BroadCast/Index'
-import { createBrowserRouter, Route, Routes, RouterProvider, useNavigate } from "react-router-dom";
+import { createBrowserRouter, Route, Routes, RouterProvider, useParams } from "react-router-dom";
 import { user_storage_token } from "../config";
 
 export default function App() {
-    // const navigate = useNavigate();
     const [token, settoken] = useState(null)
     useEffect(() => {
         checkToken()
@@ -33,6 +33,10 @@ export default function App() {
         {
             path: '/dashboard',
             element: <Dashboard />
+        },
+        {
+            path: `/dashboard/agent/:agentid`,
+            element: <Agent />
         },
         {
             path: '/bcm',
