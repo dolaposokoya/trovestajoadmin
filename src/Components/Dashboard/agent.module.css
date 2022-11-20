@@ -41,7 +41,12 @@
     flex-direction: column;
     justify-content: center;
     /* align-items: center; */
-    width: 70%;
+    width: 80%;
+}
+
+.profiledetails img {
+    width: .9em;
+    height: .809375em;
 }
 
 .profiledetails h3 {
@@ -57,9 +62,9 @@
 .profiledetails h5 {
     width: 100%;
     color: var(--white);
-    font-family: var(--MoolBoran);
+    font-family: var(--Montserrat);
     font-weight: var(--regular);
-    font-size: 2.375em;
+    font-size: 1.5em;
     margin-bottom: -.6em;
     text-align: left;
 }
@@ -71,4 +76,68 @@
     font-weight: var(--regular);
     font-size: 2.375em;
     margin-bottom: -.8em;
+}
+
+.transaction {
+    padding: 0em .7em;
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 97%;
+}
+
+.transaction h3 {
+    color: var(--text-color);
+    font-family: var(--MoolBoran);
+    font-weight: var(--regular);
+    font-size: 2em;
+    margin-bottom: -.8em;
+}
+
+.transaction img {
+    width: 1em;
+    height: .809375em;
+}
+
+.deposit, .withdrawn {
+    padding: 0em .7em;
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-gray);
+    height: 3.1875em;
+    width: 9.875em;
+}
+
+.withdrawn {
+    background-color: var(--dark-blue);
+}
+
+.deposit h3, .withdrawn h3{
+    color: var(--white);
+    font-family: var(--MoolBoran);
+    font-weight: var(--regular);
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: -.5em;
+}
+
+.transaction1 {
+    background-color: var(--tro-gray);
+    padding: 1em .7em;
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 97%;
+}
+
+.transaction1 h3{
+    color: var(--black);
+    font-family: var(--Montserrat);
+    font-weight: var(--semiBold);
+    font-size: .6875em;
+    text-align: left;
 }
