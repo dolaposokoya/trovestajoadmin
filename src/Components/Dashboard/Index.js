@@ -12,6 +12,7 @@ import AgentModal from '../Modal/Agent.modal'
 import { useSelector, useDispatch } from 'react-redux'
 import { user_storage_token, user_storage_name, dateFormat, convertToThousand, Naira } from '../../config'
 import Loader from '../Modal/Loader'
+import Menu from '../Modal/Menu.modal'
 import { getAdminAgents } from '../../Sagas/Requests'
 import { setAgentAction } from '../../Reducers/agent.reducer'
 
@@ -27,6 +28,7 @@ export default function Index() {
   const [skip, setskip] = useState(0)
   const [limit, setlimit] = useState(10)
   const [agents, setagents] = useState([])
+  const [menu, setmenu] = useState(false)
 
   // console.log('auth', auth)
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function Index() {
       const response = await getAdminAgents(payload)
       const { data, message, success } = response.data
       if (success === true) {
-        setagents(data.agents.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+        setagents(data.agents.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
         dispatch(setAgentAction(data))
         setloading(false)
       }
@@ -91,9 +93,14 @@ export default function Index() {
   const navigateToAgent = (id) => {
     navigate(`/dashboard/agent/${id}`)
   }
+
+  const openMenu = () => {
+    setmenu(!menu)
+  }
   return (
     <>
       {loading && <Loader />}
+      {menu && <Menu navigate={navigate} setmenu={setmenu} />}
       <div className={style.container}>
         {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} getAgents={getAgents} />}
         <div className={style.dashboard}>
@@ -101,7 +108,7 @@ export default function Index() {
             <div className={style.notification}>
               <img src={mail} />
               <img src={Bell} />
-              <div className={style.ellipse}>
+              <div className={style.ellipse} onClick={() => openMenu()}>
                 <img src={ellipse} />
                 <img src={ellipse} />
                 <img src={ellipse} />
