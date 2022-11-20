@@ -17,3 +17,4 @@ export const convertToThousand = (value) => {
 }
 
 export const Naira = '₦'
+export const defaultImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSySSYZ8Vr_66g-cqvEwxmn8qA2KRRTrbcAPA&usqp=CAU'

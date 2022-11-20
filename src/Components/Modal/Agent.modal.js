@@ -11,7 +11,6 @@ import Loader from './Loader'
 
 export default function AgentModal(props) {
     const { setopenModal, auth, setloading,loading,getAgents } = props
-    const { agents } = useSelector(state => state)
     const [agentData, setagentData] = useState({
         first_name: '',
         last_name: '',

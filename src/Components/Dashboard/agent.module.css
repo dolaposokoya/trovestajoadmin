@@ -1,0 +1,74 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    width: 97%;
+    margin-top: 2em;
+}
+
+.profile img {
+    width: 6.85em;
+    height: 6.85em;
+    border-radius: 100%;
+    margin-left: .8em;
+}
+
+.data {
+    display: flex;
+    justify-self: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 1em;
+}
+
+.data h3 {
+    color: var(--text-color);
+    font-family: var(--MoolBoran);
+    font-weight: var(--regular);
+    font-size: 2em;
+    margin-bottom: -.3em;
+}
+
+.data h4 {
+    color: var(--text-color);
+    font-family: var(--Montserrat);
+    font-weight: var(--semiBold);
+    font-size: .8125em;
+    margin-bottom: .7em;
+}
+
+.profiledetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    width: 70%;
+}
+
+.profiledetails h3 {
+    color: var(--white);
+    font-family: var(--Montserrat);
+    font-weight: var(--regular);
+    font-size: 1.1875em;
+    margin-bottom: .1em;
+    margin-top: 1em;
+    text-align: left;
+}
+
+.profiledetails h5 {
+    width: 100%;
+    color: var(--white);
+    font-family: var(--MoolBoran);
+    font-weight: var(--regular);
+    font-size: 2.375em;
+    margin-bottom: -.6em;
+    text-align: left;
+}
+
+.profiledetails p {
+    width: 100%;
+    color: var(--white);
+    font-family: var(--MoolBoran);
+    font-weight: var(--regular);
+    font-size: 2.375em;
+    margin-bottom: -.8em;
+}

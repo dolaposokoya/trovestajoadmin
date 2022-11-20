@@ -22,7 +22,6 @@ export const setAgentAction = (action) => {
 }
 
 export const agentReducer = (state = initialState, action) => {
-    console.log('action action',action)
     switch (action.type) {
         case CREATE_AGENT:
             return {

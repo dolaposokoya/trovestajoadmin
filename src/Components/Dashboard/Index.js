@@ -34,50 +34,41 @@ export default function Index() {
     getAgents()
   }, [])
 
-  useEffect(() => {
-    getAgents()
-  }, [skip, limit])
+  // useEffect(() => {
+  //   getAgents()
+  // }, [skip, limit])
 
   const getAgents = async () => {
-try {
-  const token = localStorage.getItem(user_storage_token)
-  const payload = {
-    token: token,
-    skip: skip,
-    limit: limit
-  }
-  setloading(true)
-  const response = await getAdminAgents(payload)
-  const { data, message, success } = response.data
-  if (success === true) {
-    dispatch(setAgentAction(data))
-    setagents(data.agents)
-    setloading(false)
-  }
-  else {
-    setloading(false)
-    alert(message)
-  }
-} catch (error) {
-  setloading(false)
-  alert(error.message)
-}
-  }
-
-  const getTotalAgents = async () => {
-    const token = localStorage.getItem(user_storage_token)
-    const payload = {
-      token: token,
-      skip: skip,
-      limit: limit
-    }
-    const response = await getAdminAgents(payload)
-    const { data, message, success } = response.data
-    if (success === true) {
-      setagents(data)
-    }
-    else {
-      alert(message)
+    try {
+      const token = localStorage.getItem(user_storage_token)
+      const payload = {
+        token: token,
+        skip: skip,
+        limit: limit
+      }
+      setloading(true)
+      const response = await getAdminAgents(payload)
+      const { data, message, success } = response.data
+      if (success === true) {
+        setagents(data.agents.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+        dispatch(setAgentAction(data))
+        setloading(false)
+      }
+      else {
+        setloading(false)
+        alert(message)
+      }
+    } catch (error) {
+      if (error.message === "Request failed with status code 401") {
+        localStorage.removeItem(user_storage_token)
+        localStorage.removeItem(user_storage_name)
+        setloading(false)
+        navigate('/')
+      }
+      else {
+        setloading(false)
+        alert(error.message)
+      }
     }
   }
 
