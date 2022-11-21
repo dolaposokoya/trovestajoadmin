@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { host } from '../config'
 const baseUrl = `${host}/api/v1`
+
+console.log('baseUrl',baseUrl)
 const headers = {
     'Content-Type': 'application/json'
 }

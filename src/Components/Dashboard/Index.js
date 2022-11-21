@@ -50,15 +50,24 @@ export default function Index() {
       }
       setloading(true)
       const response = await getAdminAgents(payload)
-      const { data, message, success } = response.data
+      const { data, message, success,type } = response.data
       if (success === true) {
         setagents(data.agents.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
         dispatch(setAgentAction(data))
         setloading(false)
       }
       else {
-        setloading(false)
-        alert(message)
+        if (type === "UNAUHTORIZED") {
+          localStorage.removeItem(user_storage_token)
+          localStorage.removeItem(user_storage_name)
+          setloading(false)
+          navigate('/')
+        }
+        else {
+          setloading(false)
+          alert(message)
+        }
+
       }
     } catch (error) {
       if (error.message === "Request failed with status code 401") {
@@ -75,6 +84,7 @@ export default function Index() {
   }
 
   const adminToken = localStorage.getItem(user_storage_token)
+
   const checkToken = () => {
     const adminData = localStorage.getItem(user_storage_name)
     adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
@@ -82,6 +92,7 @@ export default function Index() {
       navigate('/')
     }
   }
+
   const totalGenerated = () => {
     let total = 0;
     agents.map(item => {
