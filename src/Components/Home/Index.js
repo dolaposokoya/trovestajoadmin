@@ -66,7 +66,7 @@ export default function Index() {
                     <LoginView navigate={navigate} />
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }
