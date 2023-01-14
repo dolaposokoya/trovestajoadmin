@@ -38,6 +38,29 @@ export default function Index() {
                             </div>
                         </div>
                     </div>
+                    {/* <div className={style.container1}>
+                    <img src={woman} alt="tro-vest-woman" className={style.woman} />
+                    <div className={style.information}>
+                        <div className={style.informationtext}>
+                            <h3>Enjoy Saving Just the Way you know it.</h3>
+                            <h6>We are committed to always bring you wonderful deals on Various savings and investment scheme</h6>
+                        </div>
+                        <div className={style.trustgrid}>
+                            <div className={style.card}>
+                                <img src={nature} alt="tro-vest" className={style.trust} />
+                                <p className='saving'>Trusted</p>
+                            </div>
+                            <div className={style.card}>
+                                <img src={balance} alt="tro-vest" className={style.trust1} />
+                                <p className='saving'>Safe</p>
+                            </div>
+                            <div className={style.card}>
+                                <img src={supervisor} alt="tro-vest" className={style.trust2} />
+                                <p className='saving'>Reliable</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
                 </div>
                 <div className={style['login-view']}>
                     <LoginView navigate={navigate} />
