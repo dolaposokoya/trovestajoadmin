@@ -121,6 +121,22 @@
     justify-content: space-around;
     align-items: center;
 }
+.download{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--tro-brown);
+    padding: .7em 2em;
+    border-radius: .9em;
+}
+.download a{
+   text-decoration: none;
+   color: white;
+   font-family: var(--Montserrat);
+   font-size: 1.2em;
+}
 
 .contacttext {
     color: var(--tro-blue);

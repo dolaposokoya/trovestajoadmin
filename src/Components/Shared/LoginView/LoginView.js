@@ -203,6 +203,9 @@ export default function LoginView(props) {
               <span className={style.contacttext}>Forgot Password ?</span>
               <span className={style.contacttext1}>Contact Support</span>
             </div>
+            <div className={style.download}>
+              <a href='https://expo.dev/artifacts/eas/8KQQDwH88yVi4VGs66toaL.apk' target="_blank">Download App</a>
+            </div>
           </form>
         </div>
       </div>
