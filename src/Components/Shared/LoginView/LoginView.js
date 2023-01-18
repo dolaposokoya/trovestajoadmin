@@ -117,7 +117,7 @@ export default function LoginView(props) {
               <span className={style.contacttext1}>Contact Support</span>
             </div>
             <div className={style.supportview}>
-              <a href='https://www.google.com/' className={`${style.appLink}`}><span style={{marginTop:'10%'}}>Download App</span></a>
+              <a href='https://expo.dev/artifacts/eas/8KQQDwH88yVi4VGs66toaL.apk' className={`${style.appLink}`}><span style={{marginTop:'10%'}}>Download App</span></a>
             </div>
           </form>
         </div>
