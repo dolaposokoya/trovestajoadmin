@@ -9,7 +9,7 @@ import { loginAdminAction, setAdminAction } from '../../../Reducers/admin.reduce
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAdminRequest } from '../../../Sagas/Requests'
 import { user_storage_name, user_storage_token } from '../../../config'
-import Loader from '../../Modal/Loader'
+import Loader from '../../Modal/Loader';
 
 export default function LoginView(props) {
   const { navigate } = props
@@ -66,7 +66,7 @@ export default function LoginView(props) {
       {loading && <Loader />}
       <div className={style['login-view1']}>
         <div className={style['login-view']}>
-          <h3 className={style.logintext}>Login</h3>
+         
           <div className={style.dropdown}>
             <select className={style.dropdownlist}>
               <option>Select User Type</option>
@@ -117,7 +117,7 @@ export default function LoginView(props) {
               <span className={style.contacttext1}>Contact Support</span>
             </div>
             <div className={style.supportview}>
-              <span style={{marginTop:'10%'}}>Download App</span>
+              <a href='https://www.google.com/' className={`${style.appLink}`}><span style={{marginTop:'10%'}}>Download App</span></a>
             </div>
           </form>
         </div>
