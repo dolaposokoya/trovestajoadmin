@@ -116,6 +116,9 @@ export default function LoginView(props) {
               <span className={style.contacttext}>Forgot Password ?</span>
               <span className={style.contacttext1}>Contact Support</span>
             </div>
+            <div className={style.supportview}>
+              <span style={{marginTop:'10%'}}>Download App</span>
+            </div>
           </form>
         </div>
       </div>
