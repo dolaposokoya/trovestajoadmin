@@ -260,7 +260,7 @@
 }
 
 .cycle {
-    background-color: var(--tro-blue);
+    /* background-color: var(--tro-blue); */
     width: 1.375em;
     height: 1.375em;
     border-radius: 100%;

@@ -3,15 +3,16 @@ import agentStyles from './agent.modal.module.css'
 import FormInput from '../Shared/FormInput/FormInput'
 import { addAgentAction, setAgentAction } from '../../Reducers/agent.reducer'
 import { useDispatch, useSelector } from 'react-redux'
-import { createdminAgent } from '../../Sagas/Requests'
+import { createdminAgent, createSuperAdminAdmin } from '../../Sagas/Requests'
 import { user_storage_token } from '../../config'
 import Loader from './Loader'
 import Compress from "react-image-file-resizer";
 
 
 export default function AgentModal(props) {
-    const { setopenModal, auth, setloading, loading, getAgents } = props
+    const { setopenModal, auth, setloading, loading, getAgents, folder, usertype } = props
     const [imageFile, setimageFile] = useState('')
+    console.log('usertype', usertype)
     const [profileImage, setprofileImage] = useState('')
     const [agentData, setagentData] = useState({
         image: '',
@@ -19,7 +20,7 @@ export default function AgentModal(props) {
         last_name: '',
         mobile: '',
         gender: '',
-        folder: 'admin',
+        folder: usertype === 'admin' ? 'agent': 'admin',
         nin: '',
         state: '',
         lga: '',
@@ -46,14 +47,14 @@ export default function AgentModal(props) {
             (uri) => {
                 setimageFile(URL.createObjectURL(uri));
                 setprofileImage(uri);
-                const image =  {
+                const image = {
                     name: 'admin-image',
                     uri: uri,
                     // uri: URL.createObjectURL(uri),
                     "type": "image/jpeg"
                 }
                 setagentData({
-                    ...agentData, image:uri
+                    ...agentData, image: uri
                 })
             },
             "blob"
@@ -79,7 +80,7 @@ export default function AgentModal(props) {
             // formData.append('image', agentData.image)
             formData.append('image', profileImage)
             setloading(true)
-            const response = await createdminAgent(formData,localStorage.getItem(user_storage_token))
+            const response = usertype === 'admin' ? await createdminAgent(formData, localStorage.getItem(user_storage_token)) : await createSuperAdminAdmin(formData, localStorage.getItem(user_storage_token))
             const { success, message } = response.data
             if (success === false) {
                 setloading(false)
@@ -88,17 +89,18 @@ export default function AgentModal(props) {
             else {
                 setopenModal(false)
                 alert(message)
-                // getAgents()
+                getAgents()
             }
         }
     }
+
     return (
         <>
             <div className={agentStyles.modal}>
                 {loading && <Loader />}
                 <div className={agentStyles['modal-content']}>
                     <div className={agentStyles.header}>
-                        <p className={agentStyles.headertext}>Register New Agent</p>
+                        <p className={agentStyles.headertext}>Register {usertype === 'admin' ? 'Agent' : 'Admin'}</p>
                         <span className={agentStyles.close} onClick={() => setopenModal(false)}>&times;</span>
                     </div>
                     <div className={agentStyles.formView}>

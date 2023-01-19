@@ -24,6 +24,19 @@ export const createdminAgent = (data,token) => {
     return axios(requestOptions);
 }
 
+export const createSuperAdminAdmin = (data,token) => {
+    headers.authorization = `Bearer ${token}`
+    headers['Content-Type'] = 'multipart/form-data'
+    const requestOptions = {
+        method: "post",
+        url: `${baseUrl}/super/create-admin`,
+        headers: headers,
+        data: data
+    }
+    return axios(requestOptions);
+}
+
+
 export const getSuperAdmins = (token) => {
     headers.authorization = `Bearer ${token}`
     const requestOptions = {

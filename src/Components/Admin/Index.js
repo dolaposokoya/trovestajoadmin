@@ -21,7 +21,6 @@ import { setSuperAdminAction,setSuperAdminAgentsAction } from '../../Reducers/su
 const adminToken = localStorage.getItem(user_storage_token)
 const userType = localStorage.getItem(user_storage_type)
 export default function Index() {
-  console.log('userType',userType)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { auth } = useSelector(state => state)
@@ -106,7 +105,6 @@ export default function Index() {
       const response = await getSuperAdmins(adminToken)
       const { data, message, success, type } = response.data
       if (success === true) {
-        console.log('data',data)
         setadmins(data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
         dispatch(setSuperAdminAction(data))
         let total = 0
@@ -170,7 +168,7 @@ export default function Index() {
       {loading && <Loader />}
       {menu && <Menu navigate={navigate} setmenu={setmenu} />}
       <div className={style.container}>
-        {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading}/>}
+        {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} usertype={userType} folder={'admin'} getAgents={getAdmins} />}
         {/* {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} getAgents={getAgents} />} */}
         <div className={style.dashboard}>
           <div className={style.window}>
@@ -243,7 +241,9 @@ export default function Index() {
             (
               <Card styles={style.tabledata} key={item._id} onClick={() => navigateToAgent(item._id,index)}>
                 <div className={style.details}>
-                  <div className={style.cycle} />
+                  <div>
+                    <image src={item.image} className={style.cycle}/>
+                    </div>
                   <div className={style.namedetails}>
                     <h3>{`${item.first_name} ${item.last_name}`}</h3>
                   </div>
