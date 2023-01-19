@@ -21,6 +21,7 @@ import { setSuperAdminAction,setSuperAdminAgentsAction } from '../../Reducers/su
 const adminToken = localStorage.getItem(user_storage_token)
 const userType = localStorage.getItem(user_storage_type)
 export default function Index() {
+  console.log('userType',userType)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { auth } = useSelector(state => state)
@@ -105,6 +106,7 @@ export default function Index() {
       const response = await getSuperAdmins(adminToken)
       const { data, message, success, type } = response.data
       if (success === true) {
+        console.log('data',data)
         setadmins(data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
         dispatch(setSuperAdminAction(data))
         let total = 0
@@ -229,7 +231,7 @@ export default function Index() {
               justifyContent: 'space-between',
               alignItems: 'center'
             }}>
-              <h2 className={style.registered}>Registered Agents</h2>
+              <h2 className={style.registered}>Registered Admin</h2>
               <h2 className={style.seeall}>See all</h2>
             </div>
             <div className={style.tablehead}>

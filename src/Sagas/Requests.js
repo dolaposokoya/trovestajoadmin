@@ -28,8 +28,8 @@ export const getSuperAdmins = (token) => {
     headers.authorization = `Bearer ${token}`
     const requestOptions = {
         method: "get",
-        // url: `${baseUrl}/super/get/registered/admin`,
-        url: `${baseUrl}/super/get-created-agents`,
+        url: `${baseUrl}/super/get/registered/admin`,
+        // url: `${baseUrl}/super/get-created-agents`,
         headers: headers,
     }
     return axios(requestOptions);
