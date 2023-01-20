@@ -144,7 +144,6 @@ export default function Index() {
   const checkToken = () => {
     const adminData = localStorage.getItem(user_storage_name)
     adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
-    console.log('superAdminToken',superAdminToken)
     if (superAdminToken === null && userType === '') {
       return navigate('/')
     }

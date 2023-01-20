@@ -100,9 +100,12 @@ export default function Index() {
   const checkToken = () => {
     const adminData = localStorage.getItem(user_storage_name)
     adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
-    if ((adminToken === null && (userType === null || userType === 'super_admin')) || userType === 'super_admin') {
+    if (adminToken === null || adminToken === '') {
       logOutAdmin()
       // return navigate('/')
+    }
+    else if (userType === 'super_admin' && (adminToken !== '' || adminToken === null)) {
+      return navigate('/dashboard')
     }
     else {
       return getAgents()

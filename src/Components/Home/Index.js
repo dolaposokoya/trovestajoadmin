@@ -10,7 +10,7 @@ import balance from '../../Assets/Images/balance.png'
 import supervisor from '../../Assets/Images/supervisor.png'
 import Footer from '../Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { user_storage_token } from '../../config';
+import { user_storage_token, user_storage_type } from '../../config';
 import { Link, redirect, useNavigate } from "react-router-dom";
 
 
@@ -19,9 +19,18 @@ export default function Index() {
     const navigate = useNavigate()
     const { auth } = useSelector(state => state)
     const adminToken = localStorage.getItem(user_storage_token)
+    const adminType = localStorage.getItem(user_storage_type)
     useEffect(() => {
-        if (adminToken !== null) {
-            navigate('/dashboard')
+        if (adminToken !== null && adminType === 'admin') {
+            console.log('Calalala')
+            return navigate('/dashboard')
+        }
+        else if (adminToken !== null && adminType === 'super_admin') {
+            console.log('Acscdfdf', adminType)
+            return navigate('/admin')
+        }
+        else {
+            return 
         }
     }, [])
 

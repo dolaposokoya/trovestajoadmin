@@ -91,8 +91,8 @@ export default function LoginView(props) {
           localStorage.setItem(user_storage_token, token)
           localStorage.setItem(user_storage_type, response.data.data.user_type)
           localStorage.setItem(user_storage_name, jsonData)
-          navigate('/dashboard')
           setloading(false);
+          return navigate('/dashboard')
         }
         else {
           seterrorView({ ...errorView, error: true, message: message, success: false })
