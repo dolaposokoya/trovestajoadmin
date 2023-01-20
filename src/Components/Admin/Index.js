@@ -243,7 +243,7 @@ export default function Index() {
               <Card styles={style.tabledata} key={item._id} onClick={() => navigateToAgent(item._id,index)}>
                 <div className={style.details}>
                   <div>
-                    <image src={item.image} className={style.cycle}/>
+                    <img src={item.image} className={style.cycle}/>
                     </div>
                   <div className={style.namedetails}>
                     <h3>{`${item.first_name} ${item.last_name}`}</h3>
