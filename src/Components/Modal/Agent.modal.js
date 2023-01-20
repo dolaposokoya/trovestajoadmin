@@ -12,7 +12,6 @@ import Compress from "react-image-file-resizer";
 export default function AgentModal(props) {
     const { setopenModal, auth, setloading, loading, getAgents, folder, usertype } = props
     const [imageFile, setimageFile] = useState('')
-    console.log('usertype', usertype)
     const [profileImage, setprofileImage] = useState('')
     const [agentData, setagentData] = useState({
         image: '',
@@ -82,7 +81,6 @@ export default function AgentModal(props) {
             // formData.append('image', agentData.image)
             formData.append('image', profileImage)
             setloading(true)
-            console.log('usertype', usertype)
             const response = usertype === 'admin' ? await createdminAgent(formData, localStorage.getItem(user_storage_token)) : await createSuperAdminAdmin(formData, localStorage.getItem(user_storage_token))
             const { success, message } = response.data
             if (success === false) {
