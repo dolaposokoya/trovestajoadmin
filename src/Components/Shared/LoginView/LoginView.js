@@ -8,7 +8,7 @@ import eye from '../../../Assets/Svg/eye.svg'
 import { loginAdminAction, setAdminAction } from '../../../Reducers/admin.reducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAdminRequest, loginSuperAdminRequest } from '../../../Sagas/Requests'
-import { user_storage_name, user_storage_token,user_storage_type } from '../../../config'
+import { user_storage_name, user_storage_token, user_storage_type } from '../../../config'
 import Loader from '../../Modal/Loader'
 
 export default function LoginView(props) {
@@ -132,12 +132,13 @@ export default function LoginView(props) {
         seterrorView({ ...errorView, error: true, message: message, success: true })
         if (token) {
           dispatch(setAdminAction(adminData))
+          console.log('token', token)
           const jsonData = JSON.stringify(response.data.data)
           localStorage.setItem(user_storage_token, token)
           localStorage.setItem(user_storage_type, response.data.data.user_type)
           localStorage.setItem(user_storage_name, jsonData)
-         return navigate('/admin')
           setloading(false);
+          return navigate('/admin')
         }
         else {
           seterrorView({ ...errorView, error: true, message: message, success: false })
@@ -149,7 +150,7 @@ export default function LoginView(props) {
       seterrorView({ ...errorView, error: true, message: error.message, success: false })
     }
   }
-  
+
   return (
     <>
       {loading && <Loader />}

@@ -20,7 +20,8 @@ export default function AgentModal(props) {
         last_name: '',
         mobile: '',
         gender: '',
-        folder: usertype === 'admin' ? 'agent': 'admin',
+        folder: usertype === 'admin' ? 'agent' : 'admin',
+        email: usertype === 'admin' ? 'troves@email' : '',
         nin: '',
         state: '',
         lga: '',
@@ -77,9 +78,11 @@ export default function AgentModal(props) {
             formData.append('state', agentData.state)
             formData.append('lga', agentData.lga)
             formData.append('address', agentData.address)
+            formData.append('email', agentData.email)
             // formData.append('image', agentData.image)
             formData.append('image', profileImage)
             setloading(true)
+            console.log('usertype', usertype)
             const response = usertype === 'admin' ? await createdminAgent(formData, localStorage.getItem(user_storage_token)) : await createSuperAdminAdmin(formData, localStorage.getItem(user_storage_token))
             const { success, message } = response.data
             if (success === false) {
@@ -156,6 +159,16 @@ export default function AgentModal(props) {
                                 />
                                 {agentData.last_name === '' && <span className={agentStyles.error}>Last name is empty</span>}
                             </div>
+                            {usertype === 'super_admin' && <div className={agentStyles.forminput}>
+                                <FormInput
+                                    type="text"
+                                    placeholder="Email"
+                                    className={agentStyles.input}
+                                    value={agentData.email}
+                                    onChange={(event) => setagentData({ ...agentData, email: event.target.value })}
+                                />
+                                {agentData.email === '' && <span className={agentStyles.error}>Email is empty</span>}
+                            </div>}
                             <div className={agentStyles.forminput}>
                                 <FormInput
                                     type="text"

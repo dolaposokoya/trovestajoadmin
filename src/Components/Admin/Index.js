@@ -18,7 +18,7 @@ import { setAgentAction } from '../../Reducers/agent.reducer'
 import { setSuperAdminAction,setSuperAdminAgentsAction } from '../../Reducers/super.admin.reducer'
 
 
-const adminToken = localStorage.getItem(user_storage_token)
+const superAdminToken = localStorage.getItem(user_storage_token)
 const userType = localStorage.getItem(user_storage_type)
 export default function Index() {
   const dispatch = useDispatch()
@@ -97,12 +97,12 @@ export default function Index() {
   const getAdmins = async () => {
     try {
       const payload = {
-        token: adminToken,
+        token: superAdminToken,
         skip: skip,
         limit: limit
       }
       setloading(true)
-      const response = await getSuperAdmins(adminToken)
+      const response = await getSuperAdmins(superAdminToken)
       const { data, message, success, type } = response.data
       if (success === true) {
         setadmins(data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
@@ -144,7 +144,8 @@ export default function Index() {
   const checkToken = () => {
     const adminData = localStorage.getItem(user_storage_name)
     adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
-    if (adminToken === null && userType === '') {
+    console.log('superAdminToken',superAdminToken)
+    if (superAdminToken === null && userType === '') {
       return navigate('/')
     }
     else if (userType === 'super_admin') {
