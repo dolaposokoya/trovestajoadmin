@@ -54,7 +54,6 @@ export default function Agent() {
     const searchForReference = (value) => {
         try {
             value = value.toLowerCase()
-            console.log('value', value)
             if (value !== '') {
                 const matcher = new RegExp(`^${value}`, 'g');
                 const filteredData = collections.filter(item => item?.payment_reference.toLowerCase().match(matcher))

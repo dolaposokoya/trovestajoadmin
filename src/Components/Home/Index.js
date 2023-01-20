@@ -22,11 +22,9 @@ export default function Index() {
     const adminType = localStorage.getItem(user_storage_type)
     useEffect(() => {
         if (adminToken !== null && adminType === 'admin') {
-            console.log('Calalala')
             return navigate('/dashboard')
         }
         else if (adminToken !== null && adminType === 'super_admin') {
-            console.log('Acscdfdf', adminType)
             return navigate('/admin')
         }
         else {

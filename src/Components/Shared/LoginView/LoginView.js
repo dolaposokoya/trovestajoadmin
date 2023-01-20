@@ -132,7 +132,6 @@ export default function LoginView(props) {
         seterrorView({ ...errorView, error: true, message: message, success: true })
         if (token) {
           dispatch(setAdminAction(adminData))
-          console.log('token', token)
           const jsonData = JSON.stringify(response.data.data)
           localStorage.setItem(user_storage_token, token)
           localStorage.setItem(user_storage_type, response.data.data.user_type)
