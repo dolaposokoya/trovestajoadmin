@@ -27,6 +27,15 @@
     border-radius: 1.5625em;
 }
 
+.dashboardintro {
+    margin-top: 1em;
+    background-image: linear-gradient(180deg, var(--tro-blue), var(--tro-whine));
+    padding: 2em 0em;
+    padding-top: 1em;
+    border-radius: 1em;
+    width: 100%;
+}
+
 .notification {
     display: flex;
     justify-content: flex-end;
@@ -136,7 +145,7 @@
 }
 
 .dashboard1 {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-content: center;
     justify-content: space-between;
@@ -159,6 +168,8 @@
     font-family: var(--Montserrat);
     font-weight: var(--medium);
     color: var(--black);
+    text-align: center;
+    /* padding-left: 1em; */
 }
 
 .dashboard1 .styles1 p {
@@ -232,8 +243,8 @@
     background-color: var(--tro-gray);
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    padding: .8em 0em;
+    justify-content: space-between;
+    padding: .8em .5em;
 }
 
 .tablehead h3 {
@@ -247,17 +258,15 @@
     margin: .8em 0em;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: .8em .3em;
     margin-bottom: .2em;
+    word-wrap: break-word;
     cursor: pointer;
+
 }
 
-.date {
-    margin: .8em 0em;
-    width: 30%;
-}
 
 .cycle {
     margin: 0em .5em;
@@ -268,11 +277,20 @@
 
 .details {
     display: flex;
-    justify-content: space-around;
+    width: 100%;
     align-items: center;
     flex-direction: row;
 }
 
+.details h3 {
+    width: 100%;
+    text-align: left
+}
+
+.date {
+    margin: .8em 0em;
+    text-align: right !important
+}
 .namedetails {
     padding-left: .2em;
 }
@@ -310,8 +328,13 @@
         justify-content: space-evenly;
     }
 
+
+    .dashboardintro {
+        width: 100%;
+    }
+
     .window>div {
-        width: 80%;
+        width: 100%;
     }
 }
 

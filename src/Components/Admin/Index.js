@@ -15,17 +15,17 @@ import Loader from '../Modal/Loader'
 import Menu from '../Modal/Menu.modal'
 import { getAdminAgents, getSuperAdmins } from '../../Sagas/Requests'
 import { setAgentAction } from '../../Reducers/agent.reducer'
-import { setSuperAdminAction,setSuperAdminAgentsAction } from '../../Reducers/super.admin.reducer'
+import { setSuperAdminAction, setSuperAdminAgentsAction } from '../../Reducers/super.admin.reducer'
 
 
-const superAdminToken = localStorage.getItem(user_storage_token)
-const userType = localStorage.getItem(user_storage_type)
 export default function Index() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { auth } = useSelector(state => state)
   const superAdmin = useSelector(state => state)
+
   const [openModal, setopenModal] = useState(false)
+  const [userType, setuserType] = useState('')
   const [admin, setadmin] = useState({})
   const [loading, setloading] = useState(false)
   const [skip, setskip] = useState(0)
@@ -94,15 +94,15 @@ export default function Index() {
   //   }
   // }
 
-  const getAdmins = async () => {
+  const getAdmins = async (token) => {
     try {
       const payload = {
-        token: superAdminToken,
+        token: token,
         skip: skip,
         limit: limit
       }
       setloading(true)
-      const response = await getSuperAdmins(superAdminToken)
+      const response = await getSuperAdmins(token)
       const { data, message, success, type } = response.data
       if (success === true) {
         setadmins(data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
@@ -142,13 +142,16 @@ export default function Index() {
   }
 
   const checkToken = () => {
+    const superAdminToken = localStorage.getItem(user_storage_token)
+    const userType = localStorage.getItem(user_storage_type)
     const adminData = localStorage.getItem(user_storage_name)
+    setuserType(userType)
     adminData !== null ? setadmin(JSON.parse(adminData)) : setadmin({})
     if (superAdminToken === null && userType === '') {
       return navigate('/')
     }
     else if (userType === 'super_admin') {
-      return getAdmins()
+      return getAdmins(superAdminToken)
     }
     else {
       return
@@ -169,7 +172,6 @@ export default function Index() {
       {menu && <Menu navigate={navigate} setmenu={setmenu} />}
       <div className={style.container}>
         {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} usertype={userType} folder={'admin'} getAgents={getAdmins} />}
-        {/* {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} getAgents={getAgents} />} */}
         <div className={style.dashboard}>
           <div className={style.window}>
             <div className={style.dashboardintro}>
@@ -195,17 +197,12 @@ export default function Index() {
                 <img src={search} className={style.absolute1} />
               </div>
             </div>
-            {/* <div className={style.dashboard}>
-              <Card styles={style.styles}>
-                <h3>Total Revenue</h3>
-                <p>{`${convertToThousand(totalRevenue)}`}</p>
-              </Card>
-            </div> */}
+
           </div>
           <div className={style.dashboard1}>
             <Card styles={style.styles1}>
-              {userType === 'admin' ? <h3>Total Agents</h3> : <h3>Total Admin Personel</h3>}
-              {userType === 'admin' ? <p>{agents?.length}</p> : <p>{admins?.length}</p>}
+              <h3 className={style.total}>Total Admin Personel</h3>
+              <p>{admins?.length}</p>
             </Card>
             <Card styles={style.styles1}>
               <h3>Total Clients</h3>
@@ -234,22 +231,24 @@ export default function Index() {
             </div>
             <div className={style.tablehead}>
               <h3>Name</h3>
-              {userType === 'admin' ? <h3>Amount</h3> : <h3>Email</h3>}
+              <h3>Email</h3>
               <h3>Date Created</h3>
             </div>
             {userType === 'super_admin' && admins?.map((item, index) =>
             (
-              <Card styles={style.tabledata} key={item._id} onClick={() => navigateToAgent(item._id,index)}>
+              <Card styles={style.tabledata} key={item._id} onClick={() => navigateToAgent(item._id, index)}>
                 <div className={style.details}>
-                  <div>
-                    <img src={item.image} className={style.cycle}/>
-                    </div>
+                  <img src={item.image} className={style.cycle} />
                   <div className={style.namedetails}>
                     <h3>{`${item.first_name} ${item.last_name}`}</h3>
                   </div>
                 </div>
-                <h3>{`${item.email}`}</h3>
-                <h3 className={style.date}>{dateFormat(item.createdAt)}</h3>
+                <div className={style.details}>
+                  <h3>{`${item.email}`}</h3>
+                </div>
+                <div className={style.details}>
+                  <h3 className={style.date}>{dateFormat(item.createdAt)}</h3>
+                </div>
               </Card>
             )
             )}

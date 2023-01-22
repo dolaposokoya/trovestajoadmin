@@ -1,20 +1,109 @@
-import React from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import style from './broadcast.module.css'
+import DisplayMessage from '../Message';
+import { useSelector } from 'react-redux';
+import Loader from '../Modal/Loader';
+import { NavigationType } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ACCESS_DENIED, UNAUHTORIZED, user_storage_token } from '../../config';
+import { getSuperAdminBroadcast, sendBroadCast } from '../../Sagas/Requests';
 
 export default function Index() {
-  return (
-      <div className={style.container}>
-          <div className={style.messagebox}>
-              <form>
-                  <input placeholder='Message Title' type='text' className={style.messageinput} />
-                  <textarea id="w3review" name="w3review" rows="10" cols="100"></textarea>
-                  <button>Send</button>
-              </form>
-          </div>
-          <div className={style.messagedetails}>
-              <h3>Inbox</h3>
-              <h3>Sent Items</h3>
-          </div>
-    </div>
-  )
+    const token = localStorage.getItem(user_storage_token)
+    const navigate = useNavigate()
+    const [loading, setloading] = useState(false)
+    const [messages, setmessages] = useState([])
+    const [messageData, setmessageData] = useState({
+        title: '',
+        message: ''
+    })
+
+    useLayoutEffect(() => {
+        if (!token) {
+            setloading(false)
+            return navigate('/')
+        }
+        else {
+            getMyMessages()
+        }
+    }, [])
+
+    const sendMessage = async (event) => {
+        try {
+            event.preventDefault()
+            if (messageData.title === '' || messageData.message === '') {
+                DisplayMessage('Empty fields', 'warning', 'Empty')
+            }
+            else {
+                const data = {
+                    title: messageData.title,
+                    message: messageData.message, token
+                }
+                setloading(true)
+                const response = await sendBroadCast(data)
+                const { success, message } = response.data
+                if (success === false && (message === UNAUHTORIZED || message === ACCESS_DENIED)) {
+                    setloading(false)
+                    DisplayMessage(message, 'warning', 'UNAUHTORIZED')
+                    return navigate('/')
+                }
+                else if (success === false && (message !== UNAUHTORIZED || message !== ACCESS_DENIED)) {
+                    setloading(false)
+                    DisplayMessage(message, 'warning', 'Something went wrong')
+                }
+                else {
+                    setmessageData({
+                        title: '',
+                        message: ''
+                    })
+                    await getMyMessages()
+                    DisplayMessage(message, 'success', 'Delivered')
+                }
+            }
+        } catch (error) {
+            DisplayMessage(error.message, 'warning', 'Error Occured')
+        }
+    }
+
+    async function getMyMessages(event) {
+        try {
+            setloading(true)
+            const response = await getSuperAdminBroadcast(token)
+            const { success, message, data } = response.data
+            if (success === false && (message === UNAUHTORIZED || message === ACCESS_DENIED)) {
+                setloading(false)
+                DisplayMessage(message, 'warning', 'UNAUHTORIZED')
+                return navigate('/')
+            }
+            else if (success === false && (message !== UNAUHTORIZED || message !== ACCESS_DENIED)) {
+                setloading(false)
+                DisplayMessage(message, 'warning', 'Something went wrong')
+            }
+            else {
+                setloading(false)
+                setmessages(data)
+            }
+        } catch (error) {
+            setloading(false)
+            DisplayMessage(error.message, 'warning', 'Error Occured')
+        }
+    }
+    return (
+        <>
+            {loading && <Loader />}
+            <div className={style.container}>
+                <div className={style.messagebox}>
+                    <form>
+                        <input placeholder='Message Title' type='text' className={style.messageinput} onChange={(evt) => setmessageData({ ...messageData, title: evt.target.value })} value={messageData.title} />
+                        <textarea cols="2" rows="500" placeholder='Message Body' onChange={(evt) => setmessageData({ ...messageData, message: evt.target.value })} value={messageData.message}></textarea>
+                        <button onClick={(event) => sendMessage(event)}>Send</button>
+                    </form>
+                </div>
+                <div className={style.messagedetails}>
+                    <h3>Inbox</h3>
+                    <h3>Sent Items ({ messages && ` ${messages.length} ` })</h3>
+                </div>
+            </div>
+        </>
+    )
 }

@@ -13,7 +13,7 @@ import Loader from '../../Modal/Loader'
 
 export default function LoginView(props) {
   const { navigate } = props
-  const { auth } = useSelector(state => state)
+  const { auth, } = useSelector(state => state)
   const [secure, setsecure] = useState(true)
   const [loading, setloading] = useState(false)
   const [errorView, seterrorView] = useState({
@@ -37,7 +37,6 @@ export default function LoginView(props) {
     }
     setadminData({ ...adminData, usertype: event.target.value })
   }
-
   const loginUser = async (event) => {
     event.preventDefault()
     seterrorView({ ...errorView, error: false, message: '' })
@@ -105,7 +104,6 @@ export default function LoginView(props) {
     }
   }
 
-
   const loginSuperAdmin = async (event) => {
     event.preventDefault()
     seterrorView({ ...errorView, error: false, message: '' })
@@ -150,6 +148,12 @@ export default function LoginView(props) {
     }
   }
 
+  // if (auth && auth?.token && auth?.data.user_type === "super_admin") {
+  //   return navigate('/admin')
+  // }
+  // else if (auth && auth?.token && auth?.data.user_type === "admin") {
+  //   return navigate('/dashboard')
+  // }
   return (
     <>
       {loading && <Loader />}

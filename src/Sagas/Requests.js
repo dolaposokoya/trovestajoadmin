@@ -12,7 +12,7 @@ export const loginUser = () => {
     });
 }
 
-export const createdminAgent = (data,token) => {
+export const createdminAgent = (data, token) => {
     headers.authorization = `Bearer ${token}`
     headers['Content-Type'] = 'multipart/form-data'
     const requestOptions = {
@@ -24,7 +24,7 @@ export const createdminAgent = (data,token) => {
     return axios(requestOptions);
 }
 
-export const createSuperAdminAdmin = (data,token) => {
+export const createSuperAdminAdmin = (data, token) => {
     headers.authorization = `Bearer ${token}`
     headers['Content-Type'] = 'multipart/form-data'
     const requestOptions = {
@@ -127,6 +127,27 @@ export const getCollectionHistory = (data) => {
     const requestOptions = {
         method: "get",
         url: `${baseUrl}/super/collection-history/${collection_id}`,
+        headers: headers,
+    }
+    return axios(requestOptions);
+}
+
+export const sendBroadCast = (data) => {
+    headers.authorization = `Bearer ${data.token}`
+    const requestOptions = {
+        method: "post",
+        url: `${baseUrl}/super/send-broadcast`,
+        headers: headers,
+        data: data
+    }
+    return axios(requestOptions);
+}
+
+export const getSuperAdminBroadcast = (token) => {
+    headers.authorization = `Bearer ${token}`
+    const requestOptions = {
+        method: "get",
+        url: `${baseUrl}/super/broadcasts`,
         headers: headers,
     }
     return axios(requestOptions);
