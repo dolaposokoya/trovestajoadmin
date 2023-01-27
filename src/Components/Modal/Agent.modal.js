@@ -211,7 +211,7 @@ export default function AgentModal(props) {
                                     style={{
                                         position: 'absolute',
                                         right: '.3em',
-                                        top: '1em'
+                                        top: '1.8em'
                                     }}>
                                     <i class="fa-solid fa-lock"></i>
                                 </div>
