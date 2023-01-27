@@ -151,7 +151,7 @@ export default function Index() {
         {loading && <Loader />}
         {menu && <Menu navigate={navigate} setmenu={setmenu} />}
         <div className={style.container}>
-          {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} getAgents={getAgents} />}
+          {openModal === true && <AgentModal setopenModal={setopenModal} auth={auth} setloading={setloading} loading={loading} getAgents={getAgents} usertype={userType} />}
           <div className={style.dashboard}>
             <div className={style.window}>
               <div className={style.dashboardintro}>

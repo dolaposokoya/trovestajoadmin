@@ -34,9 +34,9 @@ export default function Footer() {
                 <div className={style.copyright}>
                 <p>© {new Date().getFullYear()} Trovest Limited. All rights reserved.</p>
             </div>
-            <div className={style.copyright}>
+            {/* <div className={style.copyright}>
                 <p>Powered By Phrite Tech & Flowth Soltn Hub © {new Date().getFullYear()}. All rights reserved.</p>
-            </div>
+            </div> */}
             </footer>
         </>
     )

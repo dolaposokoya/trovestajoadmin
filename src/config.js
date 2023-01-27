@@ -7,6 +7,16 @@ export const UNAUHTORIZED = 'Unauthorized Access'
 // export const host = process.env.REACT_APP_LIVE
 export const host = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL : process.env.REACT_APP_LIVE
 
+export const PasswordCheck = async (password) => {
+    const check = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/);
+    if (check.test(password)) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
 export const dateFormat = (date) => {
     const newDate = new Date(date)
     const year = newDate.getFullYear()

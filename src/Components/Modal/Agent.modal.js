@@ -4,15 +4,17 @@ import FormInput from '../Shared/FormInput/FormInput'
 import { addAgentAction, setAgentAction } from '../../Reducers/agent.reducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { createdminAgent, createSuperAdminAdmin } from '../../Sagas/Requests'
-import { user_storage_token } from '../../config'
+import { PasswordCheck, user_storage_token } from '../../config'
 import Loader from './Loader'
 import Compress from "react-image-file-resizer";
+import DisplayMessage from '../Message'
 
 
 export default function AgentModal(props) {
     const { setopenModal, auth, setloading, loading, getAgents, folder, usertype } = props
     const [imageFile, setimageFile] = useState('')
     const [profileImage, setprofileImage] = useState('')
+    const [passwordType, setpasswordType] = useState(true)
     const [agentData, setagentData] = useState({
         image: '',
         first_name: '',
@@ -22,6 +24,7 @@ export default function AgentModal(props) {
         folder: usertype === 'admin' ? 'agent' : 'admin',
         email: usertype === 'admin' ? 'troves@email' : '',
         nin: '',
+        password: '',
         state: '',
         lga: '',
         address: '',
@@ -30,6 +33,9 @@ export default function AgentModal(props) {
     const checkInput = () => {
         let valid = true
         if (agentData.first_name === '' || agentData.last_name === '' || agentData.mobile === '' || agentData.gender === '' || agentData.nin === '' || agentData.state === '' || agentData.lga === '' || agentData.address === '' || imageFile === '') {
+            valid = false
+        }
+        if (agentData.password === '') {
             valid = false
         }
         return valid
@@ -65,32 +71,46 @@ export default function AgentModal(props) {
         event.preventDefault()
         const valid = checkInput()
         if (valid === false) {
-            alert('some fileds are empty')
-        } else {
-            const formData = new FormData()
-            formData.append('first_name', agentData.first_name)
-            formData.append('last_name', agentData.last_name)
-            formData.append('mobile', agentData.mobile)
-            formData.append('gender', agentData.gender)
-            formData.append('folder', agentData.folder)
-            formData.append('nin', agentData.nin)
-            formData.append('state', agentData.state)
-            formData.append('lga', agentData.lga)
-            formData.append('address', agentData.address)
-            formData.append('email', agentData.email)
-            // formData.append('image', agentData.image)
-            formData.append('image', profileImage)
-            setloading(true)
-            const response = usertype === 'admin' ? await createdminAgent(formData, localStorage.getItem(user_storage_token)) : await createSuperAdminAdmin(formData, localStorage.getItem(user_storage_token))
-            const { success, message } = response.data
-            if (success === false) {
-                setloading(false)
-                alert(message)
+            DisplayMessage('Some fields are empty', 'warning')
+        }
+        else if (agentData.password) {
+            if (agentData.password && agentData.password.length > 20) {
+                DisplayMessage('Password should be 20 characters long', 'warning')
             }
             else {
-                setopenModal(false)
-                alert(message)
-                getAgents()
+                console.log('agentData.password', agentData.password)
+                const password = await PasswordCheck(agentData.password)
+                if (password === false) {
+                    DisplayMessage('Password should contain upper case, lower casee, number and one special character', 'warning')
+                }
+                else {
+                    const formData = new FormData()
+                    formData.append('first_name', agentData.first_name)
+                    formData.append('last_name', agentData.last_name)
+                    formData.append('mobile', agentData.mobile)
+                    formData.append('gender', agentData.gender)
+                    formData.append('folder', agentData.folder)
+                    formData.append('nin', agentData.nin)
+                    formData.append('state', agentData.state)
+                    formData.append('lga', agentData.lga)
+                    formData.append('address', agentData.address)
+                    formData.append('email', agentData.email)
+                    formData.append('password', agentData.password)
+                    // formData.append('image', agentData.image)
+                    formData.append('image', profileImage)
+                    setloading(true)
+                    const response = usertype === 'admin' ? await createdminAgent(formData, localStorage.getItem(user_storage_token)) : await createSuperAdminAdmin(formData, localStorage.getItem(user_storage_token))
+                    const { success, message } = response.data
+                    if (success === false) {
+                        setloading(false)
+                        DisplayMessage(message, 'warning')
+                    }
+                    else {
+                        setopenModal(false)
+                        DisplayMessage(message, 'success')
+                        getAgents()
+                    }
+                }
             }
         }
     }
@@ -177,6 +197,25 @@ export default function AgentModal(props) {
                                     onChange={(event) => setagentData({ ...agentData, mobile: event.target.value })}
                                 />
                                 {agentData.mobile === '' && <span className={agentStyles.error}>Mobile is empty</span>}
+                            </div>
+                            <div className={agentStyles.forminput}>
+                                <FormInput
+                                    type={passwordType === true ? 'password' : 'text'}
+                                    placeholder="Password"
+                                    className={agentStyles.input}
+                                    value={agentData.password}
+                                    onChange={(event) => setagentData({ ...agentData, password: event.target.value })}
+                                />
+                                <div
+                                    onClick={() => setpasswordType(!passwordType)}
+                                    style={{
+                                        position: 'absolute',
+                                        right: '.3em',
+                                        top: '1em'
+                                    }}>
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                {agentData.password === '' && <span className={agentStyles.error}>Password is empty</span>}
                             </div>
                             <div className={agentStyles.forminput}>
                                 <FormInput

@@ -70,6 +70,8 @@ form {
 
 .forminput, .formbutton {
 width: 100%;
+padding-top: .7em;
+position: relative;
 }
 
 .input {
@@ -85,6 +87,8 @@ width: 100%;
   color: var(--tro-brown);
   border-radius: 0em;
   border-bottom: 1px solid var(--tro-blue);
+  position: relative;
+  background-color: blue;
 }
 
 .input::placeholder {
