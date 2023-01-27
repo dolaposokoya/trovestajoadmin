@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useLayoutEffect } from 'react'
 import style from './dashboard.module.css'
 import Bell from '../../Assets/Svg/bell.svg'
 import mail from '../../Assets/Svg/mail.svg'
@@ -19,7 +19,7 @@ import { setAdminAction } from '../../Reducers/admin.reducer'
 import Footer from '../Footer/Footer'
 
 
-const userType = localStorage.getItem(user_storage_type)
+
 export default function Index() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -28,12 +28,18 @@ export default function Index() {
   const [admin, setadmin] = useState({})
   const [loading, setloading] = useState(false)
   const [skip, setskip] = useState(0)
+  const [userType, setuserType] = useState('')
   const [limit, setlimit] = useState(10)
   const [agents, setagents] = useState([])
   const [menu, setmenu] = useState(false)
   const [totalClients, settotalClients] = useState(0)
   const [totalRevenue, settotalRevenue] = useState(0)
 
+
+  useLayoutEffect(() => {
+    const userType = localStorage.getItem(user_storage_type)
+    setuserType(userType)
+  }, [])
   useEffect(() => {
     checkToken()
   }, [])
