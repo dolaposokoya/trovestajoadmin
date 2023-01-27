@@ -152,3 +152,12 @@ export const getSuperAdminBroadcast = (token) => {
     }
     return axios(requestOptions);
 }
+export const getAdminBroadcast = (token) => {
+    headers.authorization = `Bearer ${token}`
+    const requestOptions = {
+        method: "get",
+        url: `${baseUrl}/admin/broadcasts`,
+        headers: headers,
+    }
+    return axios(requestOptions);
+}

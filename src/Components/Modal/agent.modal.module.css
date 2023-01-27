@@ -69,9 +69,9 @@ form {
 }
 
 .forminput, .formbutton {
-width: 100%;
-padding-top: .7em;
-position: relative;
+  width: 100%;
+  padding-top: .7em;
+  position: relative;
 }
 
 .input {
@@ -115,15 +115,16 @@ position: relative;
   color: var(--tro-brown);
   font-size: .875em;
 }
+
 .forminput button {
   width: 100%;
   border-radius: 0;
   font-size: 1.2em;
   font-family: var(--Montserrat);
   font-weight: var(--bold);
-  }
-  
-.error{
+}
+
+.error {
   font-size: .7em;
   text-align: left;
   width: 100%;

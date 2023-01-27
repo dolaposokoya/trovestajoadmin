@@ -5,14 +5,15 @@ import { useSelector } from 'react-redux';
 import Loader from '../Modal/Loader';
 import { NavigationType } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ACCESS_DENIED, UNAUHTORIZED, user_storage_token } from '../../config';
-import { getSuperAdminBroadcast, sendBroadCast } from '../../Sagas/Requests';
+import { ACCESS_DENIED, UNAUHTORIZED, user_storage_token, user_storage_type } from '../../config';
+import { getAdminBroadcast, getSuperAdminBroadcast, sendBroadCast } from '../../Sagas/Requests';
 
 export default function Index() {
     const token = localStorage.getItem(user_storage_token)
     const navigate = useNavigate()
     const [loading, setloading] = useState(false)
     const [messages, setmessages] = useState([])
+    const [userType, setuserType] = useState('')
     const [messageData, setmessageData] = useState({
         title: '',
         message: ''
@@ -20,17 +21,23 @@ export default function Index() {
 
     useLayoutEffect(() => {
         if (!token) {
+            const user_type = localStorage.getItem(user_storage_type)
             setloading(false)
             return navigate('/')
         }
         else {
-            getMyMessages()
+            const user_type = localStorage.getItem(user_storage_type)
+            setuserType(user_type)
+            // getMyMessages()
         }
     }, [])
 
     const sendMessage = async (event) => {
         try {
             event.preventDefault()
+            if (userType === 'admin') {
+                return DisplayMessage('You are not authorized to make this request', 'warning')
+            }
             if (messageData.title === '' || messageData.message === '') {
                 DisplayMessage('Empty fields', 'warning', 'Empty')
             }
@@ -68,7 +75,7 @@ export default function Index() {
     async function getMyMessages(event) {
         try {
             setloading(true)
-            const response = await getSuperAdminBroadcast(token)
+            const response = userType === 'admin' ? getAdminBroadcast(token) : await getSuperAdminBroadcast(token)
             const { success, message, data } = response.data
             if (success === false && (message === UNAUHTORIZED || message === ACCESS_DENIED)) {
                 setloading(false)
@@ -101,7 +108,7 @@ export default function Index() {
                 </div>
                 <div className={style.messagedetails}>
                     <h3>Inbox</h3>
-                    <h3>Sent Items ({ messages && ` ${messages.length} ` })</h3>
+                    <h3>Sent Items ({messages && ` ${messages.length} `})</h3>
                 </div>
             </div>
         </>
