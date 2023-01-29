@@ -208,7 +208,7 @@ export default function LoginView(props) {
               <span className={style.contacttext1}>Contact Support</span>
             </div>
             <div className={style.download}>
-              <a href='https://expo.dev/artifacts/eas/uz7YjyZtEtX6g7cYczMMDp.apk' target="_blank">Download App</a>
+              <a href='https://expo.dev/artifacts/eas/qgrM72nxH8S8g7iXwSf9p.apk' target="_blank">Download App</a>
             </div>
           </form>
         </div>
