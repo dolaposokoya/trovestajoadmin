@@ -3,7 +3,8 @@ import { host } from '../config'
 const baseUrl = `${host}/api/v1`
 
 const headers = {
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*'
 }
 export const loginUser = () => {
     return axios({
