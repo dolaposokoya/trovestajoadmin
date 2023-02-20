@@ -13,7 +13,6 @@ import Loader from '../../Modal/Loader'
 
 export default function LoginView(props) {
   const { navigate } = props
-  console.log('Enee',process.env.REACT_APP_APK_LINK)
   const { auth, } = useSelector(state => state)
   const [secure, setsecure] = useState(true)
   const [loading, setloading] = useState(false)
