@@ -13,6 +13,7 @@ import Loader from '../../Modal/Loader'
 
 export default function LoginView(props) {
   const { navigate } = props
+  console.log('Enee',process.env.REACT_APP_APK_LINK)
   const { auth, } = useSelector(state => state)
   const [secure, setsecure] = useState(true)
   const [loading, setloading] = useState(false)
@@ -208,7 +209,7 @@ export default function LoginView(props) {
               <span className={style.contacttext1}>Contact Support</span>
             </div>
             <div className={style.download}>
-              <a href='https://expo.dev/artifacts/eas/qgrM72nxH8S8g7iXwSf9p.apk' target="_blank">Download App</a>
+              <a href={process.env.REACT_APP_APK_LINK} target="_blank">Download App</a>
             </div>
           </form>
         </div>
