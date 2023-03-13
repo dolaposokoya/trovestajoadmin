@@ -9,6 +9,7 @@ import AdminCollection from '../Components/Admin/AdminCollection'
 import Collection from '../Components/Dashboard/Collection'
 import BroadCast from '../Components/BroadCast/Index'
 import Profile from '../Components/Profile/Index'
+import ErrorPage from '../Components/ErrorPage'
 import { createBrowserRouter, Route, Routes, RouterProvider, useParams } from "react-router-dom";
 import { user_storage_token } from "../config";
 
@@ -28,6 +29,10 @@ export default function App() {
     }
 
     const router = createBrowserRouter([
+        {
+            path: '*',
+            element: <ErrorPage />
+        },
         {
             path: '/',
             element: <Home />
@@ -69,6 +74,7 @@ export default function App() {
             element: <Collection />
         },
     ])
+
     return (
         <RouterProvider router={router} />
     );

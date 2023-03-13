@@ -232,7 +232,7 @@
     background-color: var(--tro-gray);
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: .8em 0em;
 }
 
@@ -240,6 +240,7 @@
     color: var(--tro-blue);
     font-family: var(--Montserrat);
     font-weight: var(--bold);
+    width: 100%;
     font-size: .8em;
 }
 
@@ -253,7 +254,6 @@
     padding: .8em .3em;
     margin-bottom: .2em;
     cursor: pointer;
-    height: 10em;
 }
 
 .inputView {
@@ -292,7 +292,7 @@
 
 .details {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }

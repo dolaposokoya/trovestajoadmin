@@ -28,7 +28,7 @@ export const dateFormat = (date) => {
 }
 
 export const convertToThousand = (value) => {
-    value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0
+    value = value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0
     return `${Naira}${value}`
 }
 

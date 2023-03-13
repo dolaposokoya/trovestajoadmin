@@ -78,7 +78,6 @@ export default function AgentModal(props) {
                 DisplayMessage('Password should be 20 characters long', 'warning')
             }
             else {
-                console.log('agentData.password', agentData.password)
                 const password = await PasswordCheck(agentData.password)
                 if (password === false) {
                     DisplayMessage('Password should contain upper case, lower casee, number and one special character', 'warning')

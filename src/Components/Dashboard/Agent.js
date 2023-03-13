@@ -24,6 +24,7 @@ export default function Agent() {
     const [revenue, setrevenue] = useState(0)
     const [collections, setcollections] = useState([])
     const [agent, setagent] = useState({})
+    const [active, setactive] = useState('deposit')
 
     const getData = async () => {
         if (agents.length > 0) {
@@ -161,28 +162,43 @@ export default function Agent() {
                         </div>
                     </div>
                     <div className={styles.transaction}>
-                        <h3>Transaction Record</h3>
+                        <h3>Transaction Recordsss</h3>
                     </div>
-                    {/* <div className={styles.transaction} style={{
-                        justifyContent: 'center',
-                        marginTop: '.5em'
+                    <div className={styles.transaction} style={{
+                        justifyContent: 'space-between',
+                        marginTop: '.5em',
+                        width: '100%',
                     }}>
-                        <div className={styles.deposit}>
+                        <div className={styles.deposit} onClick={() => setactive('deposit')}>
                             <h3>Deposits</h3>
                         </div>
-                        <div className={styles.withdrawn}>
-                            <h3>Withdrawn</h3>
+                        <div className={styles.withdrawn} onClick={() => setactive('collection')}>
+                            <h3>Collection</h3>
                         </div>
-                    </div> */}
+                    </div>
                     <div className={style.inputView}>
                         <input placeholder="Search reference" onKeyUp={(event) => searchForReference(event.target.value)} />
-                        {/* <input placeholder="Search reference" type="date" onChange={(event) => searchForDate(event.target.value)} /> */}
                     </div>
                     <div className={styles.transaction1}>
                         <h3>Ref No</h3>
                         <h3>Amount</h3>
                     </div>
-                    {collections?.map(item => (
+                    {active === 'collection' && collections?.map(item => (
+                        item.status === 0 && <Card styles={style.tabledata} key={item._id} style={{
+                            width: '97%'
+                        }} onClick={() => navigateToCollection(item._id)}>
+                            <div className={style.details}>
+                                <div className={style.namedetails}>
+                                    <h3>{item.payment_reference}</h3>
+                                    <h3 className={style.date}>{dateFormat(item.datePaid)}</h3>
+                                </div>
+                            </div>
+                            <div className={style.amount}>
+                                <h3>{`${convertToThousand(item.total)}`}</h3>
+                            </div>
+                        </Card>
+                    ))}
+                    {active === 'deposit' && collections?.map(item => (
                         item.status === 1 && <Card styles={style.tabledata} key={item._id} style={{
                             width: '97%'
                         }} onClick={() => navigateToCollection(item._id)}>

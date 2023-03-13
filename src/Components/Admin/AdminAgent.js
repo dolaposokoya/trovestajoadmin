@@ -26,6 +26,7 @@ export default function Agent() {
     const [revenue, setrevenue] = useState(0)
     const [collections, setcollections] = useState([])
     const [agent, setagent] = useState({})
+    const [active, setactive] = useState('deposit')
 
     useEffect(() => {
         setloading(true)
@@ -45,7 +46,7 @@ export default function Agent() {
         if (!token) {
             alert('Unauthorized')
             setloading(false)
-           return navigate('/')
+            return navigate('/')
         }
     }
 
@@ -128,18 +129,21 @@ export default function Agent() {
                         </div>
                     </div>
                     <div className={styles.transaction}>
-                        <h3>Transaction Record</h3>
+                        <h3>Transaction Recordsds</h3>
                         {/* <img src={next} alt="mail" /> */}
                     </div>
                     <div className={styles.transaction} style={{
                         justifyContent: 'center',
-                        marginTop: '.5em'
+                        marginTop: '.5em',
+                        width: '100%',
+                        backgroundColor: 'red'
                     }}>
-                        <div className={styles.deposit}>
+                        <div className={styles.deposit} onClick={() => setactive('deposit')}>
                             <h3>Deposits</h3>
                         </div>
-                        <div className={styles.withdrawn}>
-                            <h3>Withdrawn</h3>
+                        <div className={styles.withdrawn} onClick={() => setactive('collection')}>
+                            <h3>Collection</h3>
+                            {/* <h3>Withdrawn</h3> */}
                         </div>
                     </div>
                     <div className={styles.transaction1}>
@@ -161,6 +165,7 @@ export default function Agent() {
                             </div>
                         </Card>
                     ))}
+
                 </div>
             </div>
         </>

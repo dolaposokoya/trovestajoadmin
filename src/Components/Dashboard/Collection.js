@@ -78,7 +78,7 @@ export default function Collection() {
                                 </div>
                             </div>
                             <div className={style.amount}>
-                                <h3>{`${convertToThousand(collection?.thrifts[index].amount || 0)}`}</h3>
+                                <h3>{`${convertToThousand(collection?.thrifts[index].amount?.$numberDecimal || 0)}`}</h3>
                             </div>
                         </Card>
                     ))}

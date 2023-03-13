@@ -130,6 +130,7 @@
     background-color: var(--light-gray);
     height: 3.1875em;
     width: 9.875em;
+    width: 100%;
     cursor: pointer;
 }
 
