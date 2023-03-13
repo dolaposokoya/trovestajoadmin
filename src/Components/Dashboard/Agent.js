@@ -162,7 +162,7 @@ export default function Agent() {
                         </div>
                     </div>
                     <div className={styles.transaction}>
-                        <h3>Transaction Recordsss</h3>
+                        <h3>Transaction Records</h3>
                     </div>
                     <div className={styles.transaction} style={{
                         justifyContent: 'space-between',
